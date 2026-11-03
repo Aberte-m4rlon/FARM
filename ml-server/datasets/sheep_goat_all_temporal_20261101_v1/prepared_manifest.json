@@ -1,0 +1,59 @@
+{
+  "dataset": "sheep_goat_all_temporal_20261101_v1",
+  "source_dataset": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\sheep_goat_all_original\\sheep_goat_dataset",
+  "source_archive_sha256": "86a806dd720e77530be29535fd93ee032c420c28896b7496b0b521822be12832",
+  "source_video_sha256": "b85069265aa8e2890f85d4ee69cb9fb1a2a731ccc9c749e527509cd62a12f199",
+  "source_video_fps": 15.000466635557629,
+  "sample_interval_seconds": 10,
+  "approximate_source_frame_stride": 150,
+  "class_map": {
+    "0": "sheep",
+    "1": "goat"
+  },
+  "labels_copied_without_changes": true,
+  "excluded_gap_sample_ranges": [
+    [
+      59,
+      63
+    ],
+    [
+      73,
+      98
+    ]
+  ],
+  "splits": {
+    "train": {
+      "first_sample": 1,
+      "last_sample": 58,
+      "images": 58,
+      "instances": {
+        "sheep": 513,
+        "goat": 31
+      }
+    },
+    "val": {
+      "first_sample": 64,
+      "last_sample": 72,
+      "images": 9,
+      "instances": {
+        "sheep": 51,
+        "goat": 7
+      }
+    },
+    "test": {
+      "first_sample": 99,
+      "last_sample": 107,
+      "images": 9,
+      "instances": {
+        "sheep": 41,
+        "goat": 18
+      }
+    }
+  },
+  "temporal_gaps": {
+    "train_to_val_source_frames": 750,
+    "val_to_test_source_frames": 3900,
+    "minimum_required_source_frames": 750
+  },
+  "same_source_video_warning": "All partitions come from one video. The test split is a later temporal holdout, not independent-camera or production evidence."
+}

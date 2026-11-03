@@ -1,0 +1,82 @@
+.vercel
+node_modules
+
+# Environment secrets — never commit
+.env
+.env.local
+.env.production
+.env*.local
+.env.*.local
+
+# Keep the example template
+!.env.example
+
+# Python virtualenv (myai_service)
+myai_service/.venv
+myai_service/__pycache__
+camera-gateway/.env
+camera-gateway/.venv
+camera-gateway/__pycache__
+camera-gateway/secrets/
+camera-gateway/state/
+deploy/aws/local-secrets/
+*.pem
+*.key
+
+# ML model artifacts — binaries, do not commit to git
+myai_service/models/*.joblib
+myai_service/models/*.pkl
+*.pt
+*.onnx
+!public/models/*.onnx
+*.weights
+*.tar.xz
+*.zip
+4skwhnrscr-2/
+datasets/4skwhnrscr/raw_dataset_1/
+datasets/4skwhnrscr/raw_dataset_2/
+datasets/4skwhnrscr/yolo_dataset/images/
+datasets/4skwhnrscr/yolo_dataset/labels/
+datasets/4skwhnrscr/runs/
+datasets/4skwhnrscr/weights/
+alpasfarm_yolo_goat_health_1000_scaffold/images/
+alpasfarm_yolo_goat_health_1000_scaffold/runs/
+alpasfarm_yolo_goat_health_1000_scaffold/weights/
+ml-server/models/*.pt
+ml-server/models/*.onnx
+ml-server/sheep_goat/
+ml-server/processed_sheep_goat_yolo/
+ml-server/datasets/tapo_c320ws_2026-10-17/
+ml-server/datasets/goats_sheeps_2026-10-20/
+ml-server/runs/species_detector/tapo-c320ws-*/
+ml-server/runs/species_detector/goats-sheeps-20261020-v1/
+ml-server/runs/model_comparison/
+ml-server/runs/model_comparison_060/
+ml-server/runs/.ultralytics-config/
+ml-server/models/candidates/tapo-c320ws-*/evaluation/
+ml-server/models/candidates/goats-sheeps-20261020-v1/evaluation/
+
+# Build output
+dist
+hostinger-api/
+/runs/
+*.tsbuildinfo
+Ultralytics/
+.env*
+!camera-gateway/.env.example
+ALPASFARM-Goat-Pose/images/
+ALPASFARM-Goat-Pose/labels/
+ALPASFARM-Goat-Pose/runs/
+ALPASFARM-Goat-Pose/*.png
+
+# Supabase CLI temp
+supabase/.temp/
+
+# Temporary camera/dataset review output used during local verification
+ml-server/.test-tmp/
+
+# Python bytecode caches at any depth
+**/__pycache__/
+*.py[cod]
+
+.vercel

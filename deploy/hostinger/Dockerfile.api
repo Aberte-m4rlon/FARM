@@ -1,0 +1,16 @@
+FROM node:22-alpine AS build
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY api ./api
+COPY scripts/build-hostinger-api.mjs ./scripts/build-hostinger-api.mjs
+RUN node scripts/build-hostinger-api.mjs
+RUN npm prune --omit=dev
+
+FROM node:22-alpine
+ENV NODE_ENV=production
+WORKDIR /app
+COPY --from=build /app/node_modules ./node_modules
+COPY --from=build /app/hostinger-api ./hostinger-api
+COPY deploy/hostinger/api-server.mjs ./deploy/hostinger/api-server.mjs
+CMD ["node", "deploy/hostinger/api-server.mjs"]

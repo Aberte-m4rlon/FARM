@@ -1,0 +1,29 @@
+{
+  "model_version": "sheep-goat-nightgate-balanced-v1-20261102",
+  "dataset_yaml": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\sheep_goat_nightgate_balanced_20261102\\data.yaml",
+  "ultralytics_dataset_yaml": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\models\\candidates\\sheep-goat-nightgate-balanced-v1-20261102\\ultralytics_data.yaml",
+  "dataset_fingerprint_sha256": "26cc2f2db89d56b370754826529c06b28111cd18471db1b72060e599683af0e8",
+  "starting_weights": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\models\\candidates\\sheep-goat-nightgate-finetune-20261102\\best.pt",
+  "starting_weights_sha256": "b248d36c77e08605a869a6b0a9715a6b53dcf5e4eef9d4cd66d09544c664231d",
+  "starting_weights_classes_before_alignment": {
+    "0": "sheep",
+    "1": "goat"
+  },
+  "dataset_class_order": [
+    "sheep",
+    "goat"
+  ],
+  "class_order_channels_swapped": false,
+  "starting_head_reinitialized_for_species_classes": false,
+  "epochs": 10,
+  "patience": 4,
+  "batch": 8,
+  "image_size": 640,
+  "freeze_backbone": false,
+  "seed": 42,
+  "workers": 0,
+  "device": "cpu",
+  "confidence_threshold": 0.6,
+  "training_started_at": "2026-11-01T17:39:45+00:00",
+  "torch_version": "2.14.1+cpu"
+}

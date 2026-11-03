@@ -1,0 +1,16 @@
+{
+  "model_version": "goats-sheeps-20261020-v1",
+  "dataset_yaml": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\goats_sheeps_2026-10-20\\data.yaml",
+  "dataset_fingerprint_sha256": "4dea0d4620e7a69b2d8a9023c11b196e5ecbdb4ba13b812cb1f3c4bf6d270094",
+  "starting_weights": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\camera-gateway\\yolo11n.pt",
+  "starting_weights_sha256": "0ebbc80d4a7680d14987a577cd21342b65ecfd94632bd9a8da63ae6417644ee1",
+  "epochs": 50,
+  "batch": 8,
+  "image_size": 512,
+  "seed": 42,
+  "workers": 0,
+  "device": "cpu",
+  "confidence_threshold": 0.25,
+  "training_started_at": "2026-10-20T14:19:57+00:00",
+  "torch_version": "2.14.1+cpu"
+}

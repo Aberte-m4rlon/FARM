@@ -1,0 +1,33 @@
+{
+  "model_version": "sheep-goat-all-20261101-v1",
+  "status": "candidate_failed",
+  "error_type": "RuntimeError",
+  "error": "Dataset 'C://Users/asiva/Downloads/capstone-master/ALPASFARM-work/ml-server/datasets/sheep_goat_all_temporal_20261101_v1/data.yaml' error  Dataset 'C://Users/asiva/Downloads/capstone-master/ALPASFARM-work/ml-server/datasets/sheep_goat_all_temporal_20261101_v1/data.yaml' images not found, missing path 'C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\images\\val'\nNote dataset download directory is 'C:\\Users\\asiva\\Downloads\\capstone-master\\datasets'. You can update this in 'C:\\Users\\asiva\\AppData\\Roaming\\Ultralytics\\settings.json'",
+  "training_config": {
+    "model_version": "sheep-goat-all-20261101-v1",
+    "dataset_yaml": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\sheep_goat_all_temporal_20261101_v1\\data.yaml",
+    "dataset_fingerprint_sha256": "845dc089242702c0ef3d292dc353d7cdee7f5e316891bff781a95eb1a2e3d5b7",
+    "starting_weights": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\models\\active\\best.pt",
+    "starting_weights_sha256": "4b7896863754dfb56ae138e6847e56cc9f1cfaa0be2869c605a5b89247a0ab9e",
+    "starting_weights_classes_before_alignment": {
+      "0": "goat",
+      "1": "sheep"
+    },
+    "dataset_class_order": [
+      "sheep",
+      "goat"
+    ],
+    "class_order_channels_swapped": true,
+    "epochs": 30,
+    "batch": 4,
+    "image_size": 640,
+    "seed": 42,
+    "workers": 0,
+    "device": "cpu",
+    "confidence_threshold": 0.6,
+    "training_started_at": "2026-11-01T13:38:07+00:00",
+    "torch_version": "2.14.1+cpu"
+  },
+  "promotion_ready": false,
+  "cctv_validation": "not_run"
+}

@@ -1,0 +1,115 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: deploy/hostinger/Dockerfile.web
+      args:
+        VITE_SUPABASE_URL: ${VITE_SUPABASE_URL:?Set VITE_SUPABASE_URL in .env.hostinger}
+        VITE_SUPABASE_ANON_KEY: ${VITE_SUPABASE_ANON_KEY:?Set VITE_SUPABASE_ANON_KEY in .env.hostinger}
+    restart: unless-stopped
+    depends_on:
+      - api
+    networks:
+      - app
+
+  api:
+    build:
+      context: .
+      dockerfile: deploy/hostinger/Dockerfile.api
+    restart: unless-stopped
+    environment:
+      PORT: "3000"
+      SUPABASE_URL: ${VITE_SUPABASE_URL:?Set VITE_SUPABASE_URL in .env.hostinger}
+      SUPABASE_ANON_KEY: ${VITE_SUPABASE_ANON_KEY:?Set VITE_SUPABASE_ANON_KEY in .env.hostinger}
+      SUPABASE_SERVICE_ROLE_KEY: ${SUPABASE_SERVICE_ROLE_KEY:-}
+      SUPABASE_SERVICE_KEY: ${SUPABASE_SERVICE_ROLE_KEY:-}
+      CAMERA_OWNER_USER_ID: ${CAMERA_OWNER_USER_ID:-}
+      CAMERA_GATEWAY_TOKEN: ${CAMERA_GATEWAY_TOKEN:-}
+      ML_BACKEND_URL: http://ml-server:8000
+      ML_API_SECRET: ${ML_API_SECRET:?Set a private ML_API_SECRET in .env.hostinger}
+      HOSTINGER_PRIVATE_ML_BACKEND: "1"
+      ML_MAX_IMAGE_BYTES: "10485760"
+      GROQ_API_KEY: ${GROQ_API_KEY:-}
+      GROQ_MODEL: ${GROQ_MODEL:-}
+      GROQ_VISION_MODEL: ${GROQ_VISION_MODEL:-qwen/qwen3.8-27b}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      GEMINI_VISION_MODEL: ${GEMINI_VISION_MODEL:-gemini-3.6-flash}
+      SEMAPHORE_API_KEY: ${SEMAPHORE_API_KEY:-}
+      SEMAPHORE_SENDER_NAME: ${SEMAPHORE_SENDER_NAME:-}
+      TWILIO_ACCOUNT_SID: ${TWILIO_ACCOUNT_SID:-}
+      TWILIO_AUTH_TOKEN: ${TWILIO_AUTH_TOKEN:-}
+      TWILIO_PHONE_NUMBER: ${TWILIO_PHONE_NUMBER:-}
+      RESEND_API_KEY: ${RESEND_API_KEY:-}
+      SENDGRID_API_KEY: ${SENDGRID_API_KEY:-}
+      MAIL_FROM_ADDRESS: ${MAIL_FROM_ADDRESS:-}
+      MAIL_FROM_NAME: ${MAIL_FROM_NAME:-ALPASFARM}
+      ALLOWED_FRONTEND_ORIGINS: https://${ALPAS_DOMAIN:?Set ALPAS_DOMAIN to your public domain}
+    expose:
+      - "3000"
+    depends_on:
+      ml-server:
+        condition: service_started
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/healthz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    networks:
+      - app
+
+  ml-server:
+    build:
+      context: ./ml-server
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      SPECIES_API_KEY: ${ML_API_SECRET:?Set a private ML_API_SECRET in .env.hostinger}
+      YOLO_SPECIES_MODEL_PATH: ${YOLO_SPECIES_MODEL_PATH:-/models/active/best.pt}
+      YOLO_MODEL_VERSION: ${YOLO_MODEL_VERSION:-new-model-pending}
+      YOLO_PERSON_MODEL_NAME: ${YOLO_PERSON_MODEL_NAME:-yolo11n.pt}
+      YOLO_IMAGE_SIZE: "640"
+      YOLO_CONFIG_DIR: /tmp/ultralytics
+      ALLOWED_ORIGINS: https://${ALPAS_DOMAIN:?Set ALPAS_DOMAIN to your public domain}
+      MAX_IMAGE_BYTES: "10485760"
+      MAX_IMAGE_PIXELS: "20000000"
+      YOLO_CONFIDENCE_THRESHOLD: "0.60"
+      OMP_NUM_THREADS: "2"
+      MKL_NUM_THREADS: "2"
+    volumes:
+      - ${YOLO_SPECIES_MODEL_DIR:-./ml-server/models/active}:/models/active:ro
+    expose:
+      - "8000"
+    healthcheck:
+      test: ["CMD", "python", "healthcheck.py"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+      start_period: 120s
+    networks:
+      - app
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    environment:
+      ALPAS_DOMAIN: ${ALPAS_DOMAIN:?Set ALPAS_DOMAIN to your public domain}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./deploy/hostinger/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - web
+    networks:
+      - app
+
+networks:
+  app:
+    driver: bridge
+
+volumes:
+  caddy_data:
+  caddy_config:

@@ -1,0 +1,23 @@
+[
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"f01900fd-9921-454c-a3b7-fb58f0332208","record_date":"2026-07-01","yield_litres":1.2},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"f01900fd-9921-454c-a3b7-fb58f0332208","record_date":"2026-07-02","yield_litres":1.3},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"f01900fd-9921-454c-a3b7-fb58f0332208","record_date":"2026-07-03","yield_litres":1.1},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"f01900fd-9921-454c-a3b7-fb58f0332208","record_date":"2026-07-04","yield_litres":1.4},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"f01900fd-9921-454c-a3b7-fb58f0332208","record_date":"2026-07-05","yield_litres":1.3},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"f01900fd-9921-454c-a3b7-fb58f0332208","record_date":"2026-07-06","yield_litres":1.5},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"f01900fd-9921-454c-a3b7-fb58f0332208","record_date":"2026-07-07","yield_litres":1.4},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"50d0e6f7-fa43-4758-9d8d-2c7b78ce017b","record_date":"2026-07-01","yield_litres":0.9},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"50d0e6f7-fa43-4758-9d8d-2c7b78ce017b","record_date":"2026-07-02","yield_litres":1.0},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"50d0e6f7-fa43-4758-9d8d-2c7b78ce017b","record_date":"2026-07-03","yield_litres":0.8},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"50d0e6f7-fa43-4758-9d8d-2c7b78ce017b","record_date":"2026-07-04","yield_litres":1.1},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"50d0e6f7-fa43-4758-9d8d-2c7b78ce017b","record_date":"2026-07-05","yield_litres":1.0},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"50d0e6f7-fa43-4758-9d8d-2c7b78ce017b","record_date":"2026-07-06","yield_litres":1.2},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"50d0e6f7-fa43-4758-9d8d-2c7b78ce017b","record_date":"2026-07-07","yield_litres":1.1},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"e04074b0-25e4-4bdc-bcef-e691987ba614","record_date":"2026-07-01","yield_litres":1.5},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"e04074b0-25e4-4bdc-bcef-e691987ba614","record_date":"2026-07-02","yield_litres":1.6},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"e04074b0-25e4-4bdc-bcef-e691987ba614","record_date":"2026-07-03","yield_litres":1.4},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"e04074b0-25e4-4bdc-bcef-e691987ba614","record_date":"2026-07-04","yield_litres":1.7},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"e04074b0-25e4-4bdc-bcef-e691987ba614","record_date":"2026-07-05","yield_litres":1.6},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"e04074b0-25e4-4bdc-bcef-e691987ba614","record_date":"2026-07-06","yield_litres":1.8},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"e04074b0-25e4-4bdc-bcef-e691987ba614","record_date":"2026-07-07","yield_litres":1.7}
+]

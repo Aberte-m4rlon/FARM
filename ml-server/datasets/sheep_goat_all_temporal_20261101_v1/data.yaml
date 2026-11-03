@@ -1,0 +1,11 @@
+path: .
+train: images/train
+val: images/val
+test: images/test
+nc: 2
+names:
+  0: sheep
+  1: goat
+group_manifest: groups.csv
+validation_mode: single_video_temporal_holdout
+temporal_min_gap_frames: 750

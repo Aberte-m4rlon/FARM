@@ -1,0 +1,219 @@
+{
+  "model_version": "tapo-c320ws-20261017-fast",
+  "status": "candidate_evaluated",
+  "created_at_utc": "2026-10-17T03:40:58+00:00",
+  "training_config": {
+    "model_version": "tapo-c320ws-20261017-fast",
+    "dataset_yaml": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\tapo_c320ws_2026-10-17\\data.yaml",
+    "dataset_fingerprint_sha256": "057b9024e4a0d2ee8857fc329e780c1cf4f3155fff66dd709382f89e00d15e6d",
+    "starting_weights": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\models\\best.pt",
+    "starting_weights_sha256": "b3fb34569081c821b7338f4823f2d123b4a4529b191a26f2ed5181e02fe8621b",
+    "epochs": 5,
+    "batch": 16,
+    "image_size": 320,
+    "seed": 42,
+    "workers": 0,
+    "device": "cpu",
+    "confidence_threshold": 0.6,
+    "training_started_at": "2026-10-17T03:33:14+00:00",
+    "torch_version": "2.14.1+cpu"
+  },
+  "dataset": {
+    "data_yaml": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\tapo_c320ws_2026-10-17\\data.yaml",
+    "dataset_root": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\tapo_c320ws_2026-10-17",
+    "classes": [
+      "goat",
+      "sheep"
+    ],
+    "splits": {
+      "train": {
+        "image_directory": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\tapo_c320ws_2026-10-17\\images\\train",
+        "images": 239,
+        "negative_images": 1,
+        "instances": {
+          "goat": 901,
+          "sheep": 1360
+        },
+        "labels_sha256": "6a539762c5bef16530f501217b9b3feaf4f1f4e5ae0035600803a0e3832c5e49"
+      },
+      "val": {
+        "image_directory": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\tapo_c320ws_2026-10-17\\images\\val",
+        "images": 69,
+        "negative_images": 0,
+        "instances": {
+          "goat": 290,
+          "sheep": 12
+        },
+        "labels_sha256": "7de616e7f28a9108c21db0ae265e78422c142ec37f999a8bf1946665f382d4a4"
+      },
+      "test": {
+        "image_directory": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\tapo_c320ws_2026-10-17\\images\\test",
+        "images": 139,
+        "negative_images": 16,
+        "instances": {
+          "goat": 275,
+          "sheep": 1147
+        },
+        "labels_sha256": "b0299bcd5879b3129a60e9b0aaa2f649672b7a20ffe78d72ed8007b48bcd10b2"
+      }
+    },
+    "duplicate_images_across_splits": [],
+    "group_isolation": {
+      "manifest": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\tapo_c320ws_2026-10-17\\groups.csv",
+      "unique_temporal_segments": 3,
+      "verified": false,
+      "reason": "One source video spans the splits; independent source-group isolation is not established."
+    },
+    "temporal_holdout": {
+      "verified": true,
+      "source_video_count": 1,
+      "source_video_id": "17921026488091792031676490_0_mp4",
+      "minimum_unused_frames_between_splits": 24,
+      "split_frame_ranges": {
+        "train": {
+          "first_frame": 0,
+          "last_frame": 249
+        },
+        "val": {
+          "first_frame": 275,
+          "last_frame": 350
+        },
+        "test": {
+          "first_frame": 376,
+          "last_frame": 524
+        }
+      },
+      "independent_source_evaluation": false,
+      "promotion_eligible": false,
+      "warning": "This measures a later time segment from the same video, not generalization to a separate recording or camera session."
+    },
+    "total_instances": {
+      "goat": 1466,
+      "sheep": 2519
+    },
+    "dataset_fingerprint_sha256": "057b9024e4a0d2ee8857fc329e780c1cf4f3155fff66dd709382f89e00d15e6d",
+    "validation_passed": true
+  },
+  "test_metrics_pytorch": {
+    "confidence_used_for_validation": 0.001,
+    "precision_at_best_f1": 0.17082894588463834,
+    "recall_at_best_f1": 0.17687881429816915,
+    "map50": 0.10028984741404195,
+    "map50_95": 0.029300191542875255,
+    "per_class": {
+      "goat": {
+        "precision_at_best_f1": 0.11484525176061265,
+        "recall_at_best_f1": 0.08,
+        "map50_95": 0.009318211832093252
+      },
+      "sheep": {
+        "precision_at_best_f1": 0.22681264000866402,
+        "recall_at_best_f1": 0.2737576285963383,
+        "map50_95": 0.049282171253657255
+      }
+    },
+    "confusion_matrix": null,
+    "production_threshold_confusion_matrix": null,
+    "production_threshold": 0.6
+  },
+  "test_metrics_onnx": {
+    "confidence_used_for_validation": 0.001,
+    "precision_at_best_f1": 0.19486838242652058,
+    "recall_at_best_f1": 0.14446064833161606,
+    "map50": 0.10034728915787443,
+    "map50_95": 0.029570428610644912,
+    "per_class": {
+      "goat": {
+        "precision_at_best_f1": 0.12104493179491681,
+        "recall_at_best_f1": 0.05090909090909091,
+        "map50_95": 0.010596691511447544
+      },
+      "sheep": {
+        "precision_at_best_f1": 0.26869183305812433,
+        "recall_at_best_f1": 0.23801220575414123,
+        "map50_95": 0.04854416570984228
+      }
+    },
+    "confusion_matrix": null,
+    "production_threshold_confusion_matrix": null,
+    "production_threshold": 0.6
+  },
+  "export_comparison": {
+    "map50_delta": 5.7441743832473136e-05,
+    "map50_95_delta": 0.0002702370677696575,
+    "allowed_absolute_delta": 0.03,
+    "passed": true
+  },
+  "inference_benchmark": {
+    "pytorch": {
+      "images": 115,
+      "warmup_images": 5,
+      "latency_ms_average": 64.74,
+      "latency_ms_p50": 62.46,
+      "latency_ms_p95": 95.6,
+      "fps_from_average_latency": 15.45,
+      "device": "cpu"
+    },
+    "onnx_cpu": {
+      "images": 115,
+      "warmup_images": 5,
+      "latency_ms_average": 55.94,
+      "latency_ms_p50": 25.07,
+      "latency_ms_p95": 152.55,
+      "fps_from_average_latency": 17.88,
+      "device": "cpu"
+    }
+  },
+  "artifacts": {
+    "best_pt_sha256": "4b7896863754dfb56ae138e6847e56cc9f1cfaa0be2869c605a5b89247a0ab9e",
+    "best_onnx_sha256": "dfec2dade612221cdffb2aea9648ea13554e8273f18f1cdf15ba5070e35c84ab",
+    "best_pt_bytes": 5426906,
+    "best_onnx_bytes": 10440040
+  },
+  "promotion_ready": false,
+  "promotion_blockers": [
+    "Run a separate validation on labeled AlpasFarm/Tapo C320WS footage before production use.",
+    "Verify false positives on empty-gate, people, dogs, objects, day, and night footage.",
+    "The dataset contains one source video; temporal holdout scores are not independent evidence. Evaluate on additional labeled camera sessions."
+  ],
+  "cctv_validation": "single_video_temporal_holdout_only",
+  "additional_640px_temporal_test_comparison": {
+    "evaluation": "same 139-image chronological test split from one source video; not independent camera-session evidence",
+    "dataset_fingerprint_sha256": "057b9024e4a0d2ee8857fc329e780c1cf4f3155fff66dd709382f89e00d15e6d",
+    "images": 139,
+    "instances": 1422,
+    "image_size": 640,
+    "baseline_checkpoint_sha256": "b3fb34569081c821b7338f4823f2d123b4a4529b191a26f2ed5181e02fe8621b",
+    "candidate_checkpoint_sha256": "4b7896863754dfb56ae138e6847e56cc9f1cfaa0be2869c605a5b89247a0ab9e",
+    "confidence_0_001": {
+      "baseline": {
+        "precision": 0.0940082970200984,
+        "recall": 0.1820908298327653,
+        "map50": 0.036388202732842705,
+        "map50_95": 0.016085644797213052
+      },
+      "candidate": {
+        "precision": 0.16856264051558034,
+        "recall": 0.1806229690100658,
+        "map50": 0.08316949204241766,
+        "map50_95": 0.024424612221058885
+      }
+    },
+    "confidence_0_60": {
+      "baseline": {
+        "precision": 0.5,
+        "recall": 0.00043591979075850045,
+        "map50": 0.0025,
+        "map50_95": 0.0022499999999999994
+      },
+      "candidate": {
+        "precision": 0.19714039461938623,
+        "recall": 0.13627486724260918,
+        "map50": 0.05289891734517607,
+        "map50_95": 0.016530469996524032
+      }
+    },
+    "promotion_ready": false,
+    "promotion_note": "Candidate improved over the current checkpoint on this single-video temporal split, but absolute accuracy and goat recall remain too low to deploy. Keep the existing production model until more independent labeled Tapo recordings are tested."
+  }
+}

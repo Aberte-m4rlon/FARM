@@ -1,0 +1,19 @@
+{
+  "total_images_processed": 1107,
+  "total_annotations_converted": 11162,
+  "invalid_skipped": 525,
+  "splits": {
+    "train": {
+      "images": 884,
+      "annotations": 8819
+    },
+    "val": {
+      "images": 109,
+      "annotations": 1146
+    },
+    "test": {
+      "images": 114,
+      "annotations": 1197
+    }
+  }
+}

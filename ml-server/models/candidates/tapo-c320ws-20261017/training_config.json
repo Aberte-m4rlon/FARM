@@ -1,0 +1,16 @@
+{
+  "model_version": "tapo-c320ws-20261017",
+  "dataset_yaml": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\tapo_c320ws_2026-10-17\\data.yaml",
+  "dataset_fingerprint_sha256": "057b9024e4a0d2ee8857fc329e780c1cf4f3155fff66dd709382f89e00d15e6d",
+  "starting_weights": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\models\\best.pt",
+  "starting_weights_sha256": "b3fb34569081c821b7338f4823f2d123b4a4529b191a26f2ed5181e02fe8621b",
+  "epochs": 30,
+  "batch": 8,
+  "image_size": 640,
+  "seed": 42,
+  "workers": 0,
+  "device": "cpu",
+  "confidence_threshold": 0.6,
+  "training_started_at": "2026-10-17T03:30:37+00:00",
+  "torch_version": "2.14.1+cpu"
+}

@@ -1,0 +1,12 @@
+path: .
+train: images/train
+val: images/val
+test: images/test
+nc: 6
+names:
+  0: goat
+  1: eye_discharge
+  2: nasal_discharge
+  3: skin_lesion
+  4: abnormal_posture
+  5: possible_lameness

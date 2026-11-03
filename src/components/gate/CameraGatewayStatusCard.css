@@ -1,0 +1,87 @@
+.camera-gateway-card {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--alpafarm-border);
+  border-radius: 18px;
+  background: var(--alpafarm-surface);
+  color: var(--alpafarm-text);
+  box-shadow: 0 5px 20px rgba(30, 66, 42, .045);
+}
+.camera-gateway-heading,
+.camera-gateway-title,
+.camera-gateway-refresh,
+.camera-gateway-status-tile,
+.camera-gateway-count-flow > div { display: flex; align-items: center; }
+.camera-gateway-heading { justify-content: space-between; gap: 12px; }
+.camera-gateway-title { min-width: 0; gap: 9px; font-size: 13px; }
+.camera-gateway-title-icon,
+.camera-gateway-status-icon {
+  display: inline-grid;
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 11px;
+  background: var(--alpafarm-primary-soft);
+  color: var(--alpafarm-primary-strong);
+}
+.camera-gateway-refresh {
+  justify-content: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 0 9px;
+  border: 1px solid var(--alpafarm-border);
+  border-radius: 10px;
+  background: var(--alpafarm-surface-soft);
+  color: var(--alpafarm-text-secondary);
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.camera-gateway-refresh:focus-visible { outline: 2px solid var(--alpafarm-primary); outline-offset: 2px; }
+.camera-gateway-refresh:disabled { cursor: wait; opacity: .7; }
+.camera-gateway-warning { margin: 12px 0 0; color: var(--alpafarm-warning); font-size: 12px; line-height: 1.5; }
+.camera-gateway-status-tile {
+  position: relative;
+  gap: 10px;
+  min-width: 0;
+  margin-top: 12px;
+  padding: 11px;
+  overflow: hidden;
+  border: 1px solid var(--alpafarm-border);
+  border-radius: 13px;
+  background: var(--alpafarm-surface-soft);
+}
+.camera-gateway-status-tile > div { display: grid; min-width: 0; gap: 2px; }
+.camera-gateway-status-tile > div > strong { color: var(--alpafarm-text-secondary); font-size: 10px; }
+.camera-gateway-status-value { color: var(--alpafarm-text); font-size: 13px; font-weight: 800; }
+.camera-gateway-status-tile small { overflow: hidden; color: var(--alpafarm-text-muted); font-size: 9px; text-overflow: ellipsis; white-space: nowrap; }
+.camera-gateway-status-tile > i { position: absolute; top: 12px; right: 12px; width: 8px; height: 8px; border-radius: 50%; background: #dc4c45; }
+.camera-gateway-status-tile > i.is-online { background: #22a35a; box-shadow: 0 0 0 3px rgba(34, 163, 90, .12); }
+.camera-gateway-counts { display: grid; grid-template-columns: minmax(130px, .85fr) minmax(0, 1.15fr); gap: 10px; margin-top: 10px; }
+.camera-gateway-count-total,
+.camera-gateway-count-flow { display: grid; align-content: center; gap: 4px; min-width: 0; padding: 12px; border: 1px solid var(--alpafarm-border); border-radius: 13px; background: var(--alpafarm-surface); }
+.camera-gateway-count-total { background: var(--alpafarm-primary-soft); }
+.camera-gateway-count-total > span,
+.camera-gateway-count-flow > span { color: var(--alpafarm-text-secondary); font-size: 10px; font-weight: 700; }
+.camera-gateway-count-total > strong { color: var(--alpafarm-primary-strong); font-size: 30px; line-height: 1; font-variant-numeric: tabular-nums; }
+.camera-gateway-count-flow > div { justify-content: space-between; gap: 12px; margin-top: 2px; }
+.camera-gateway-count-flow > div > span { display: grid; gap: 2px; }
+.camera-gateway-count-flow > div small,
+.camera-gateway-count-note { color: var(--alpafarm-text-muted); font-size: 9px; }
+.camera-gateway-count-flow > div strong { color: var(--alpafarm-text); font-size: 19px; line-height: 1; font-variant-numeric: tabular-nums; }
+.camera-gateway-count-note { margin-top: 3px; }
+.camera-gateway-card.is-compact { padding: 12px; border-radius: 15px; box-shadow: none; }
+.camera-gateway-card.is-compact .camera-gateway-title { font-size: 12px; }
+.camera-gateway-card.is-compact .camera-gateway-title-icon { width: 30px; height: 30px; }
+.camera-gateway-card.is-compact .camera-gateway-status-tile { gap: 8px; padding: 9px; }
+.camera-gateway-card.is-compact .camera-gateway-status-icon { width: 29px; height: 29px; border-radius: 9px; }
+.camera-gateway-card.is-compact .camera-gateway-status-value { font-size: 12px; }
+.camera-gateway-card.is-compact .camera-gateway-status-tile small { font-size: 8px; }
+@media (max-width: 520px) {
+  .camera-gateway-card { padding: 12px; border-radius: 15px; }
+  .camera-gateway-counts { grid-template-columns: 1fr 1fr; gap: 7px; }
+  .camera-gateway-count-total, .camera-gateway-count-flow { padding: 10px; }
+  .camera-gateway-count-total > strong { font-size: 26px; }
+}

@@ -1,0 +1,8 @@
+# AlpasFarm 4skwhnrscr-2 Goat Anatomical & Health Dataset
+path: yolo_dataset
+train: images/train
+val: images/val
+test: images/test
+
+nc: 5
+names: ['goat_face', 'eye', 'mouth', 'ear', 'goat_body']

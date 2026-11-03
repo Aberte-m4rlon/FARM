@@ -1,0 +1,83 @@
+{
+  "model_version": "sheep-goat-nightgate-balanced-v1-20261102",
+  "status": "candidate_failed",
+  "error_type": "ModuleNotFoundError",
+  "error": "No module named 'onnx'",
+  "training_config": {
+    "model_version": "sheep-goat-nightgate-balanced-v1-20261102",
+    "dataset_yaml": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\sheep_goat_nightgate_balanced_20261102\\data.yaml",
+    "ultralytics_dataset_yaml": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\models\\candidates\\sheep-goat-nightgate-balanced-v1-20261102\\ultralytics_data.yaml",
+    "dataset_fingerprint_sha256": "26cc2f2db89d56b370754826529c06b28111cd18471db1b72060e599683af0e8",
+    "starting_weights": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\models\\candidates\\sheep-goat-nightgate-finetune-20261102\\best.pt",
+    "starting_weights_sha256": "b248d36c77e08605a869a6b0a9715a6b53dcf5e4eef9d4cd66d09544c664231d",
+    "starting_weights_classes_before_alignment": {
+      "0": "sheep",
+      "1": "goat"
+    },
+    "dataset_class_order": [
+      "sheep",
+      "goat"
+    ],
+    "class_order_channels_swapped": false,
+    "starting_head_reinitialized_for_species_classes": false,
+    "epochs": 10,
+    "patience": 4,
+    "batch": 8,
+    "image_size": 640,
+    "freeze_backbone": false,
+    "seed": 42,
+    "workers": 0,
+    "device": "cpu",
+    "confidence_threshold": 0.6,
+    "training_started_at": "2026-11-02T01:39:45+08:00",
+    "torch_version": "2.14.1+cpu"
+  },
+  "cctv_validation": "not_run",
+  "checkpoint_saved": true,
+  "checkpoint_sha256": "4924CBF2B0F60890540C294BDB31E9FC096E86BFD0837059DEEE6C6736764645",
+  "checkpoint_bytes": 5477786,
+  "evaluation_summary": {
+    "validation": {
+      "images": 9,
+      "goat_boxes": 7,
+      "selected_confidence": 0.15,
+      "selected_threshold_goat_precision": 0.6568,
+      "selected_threshold_goat_recall": 0.2773
+    },
+    "temporal_test": {
+      "images": 9,
+      "goat_boxes": 18,
+      "sheep_boxes": 41,
+      "ap_eval_confidence_floor": 0.001,
+      "ap_map50": 0.359,
+      "ap_map50_95": 0.173,
+      "per_class_map50": {
+        "sheep": 0.613,
+        "goat": 0.105
+      },
+      "at_confidence_0_15": {
+        "map50": 0.2973,
+        "goat_precision": 0.0,
+        "goat_recall": 0.0
+      },
+      "at_confidence_0_60": {
+        "map50": 0.238,
+        "goat_map50": 0.0,
+        "goat_precision": 0.0,
+        "goat_recall": 0.0
+      }
+    },
+    "notes": [
+      "Temporal holdout contains 9 frames from the same source video and uses weak propagated labels.",
+      "Validation-derived confidence 0.15 did not detect goats in the temporal test frames.",
+      "Not approved for production."
+    ]
+  },
+  "promotion_ready": false,
+  "promotion_blockers": [
+    "Goat detections did not transfer from validation to later temporal test frames.",
+    "Temporal test has only 9 images from the same source video and weak labels.",
+    "ONNX export was not completed because the environment lacks the onnx package.",
+    "Needs more correctly labeled goat examples from the actual camera before production use."
+  ]
+}

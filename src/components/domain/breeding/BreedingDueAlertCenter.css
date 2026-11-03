@@ -1,0 +1,260 @@
+.breeding-due-alert-modal {
+  width: min(720px, calc(100vw - 16px)) !important;
+}
+
+.breeding-due-alert-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: clamp(14px, 3vw, 24px) !important;
+}
+
+.breeding-due-animal-summary {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 16px;
+  border: 1px solid var(--color-border, #dce9df);
+  border-radius: 16px;
+  background: var(--color-surface-elevated, rgba(35, 139, 69, 0.045));
+  min-width: 0;
+}
+
+.breeding-due-animal-mark {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+  border-radius: 15px;
+  color: #fff;
+  font-size: 23px;
+  font-weight: 800;
+  background: #238b45;
+}
+
+.breeding-due-animal-copy {
+  display: flex;
+  flex: 1 1 220px;
+  min-width: 0;
+  flex-direction: column;
+  gap: 3px;
+  color: var(--color-text-secondary, #51645a);
+  font-size: 13px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.breeding-due-animal-copy strong {
+  color: var(--color-text-primary, #123c24);
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+.breeding-due-father {
+  flex: 1 1 100%;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-border, #dce9df);
+  color: var(--color-text-secondary, #51645a);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.breeding-due-message,
+.breeding-failed-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 16px;
+  border: 1px solid rgba(217, 145, 12, 0.36);
+  border-radius: 14px;
+  color: var(--color-text-primary, #5d420d);
+  background: rgba(245, 158, 11, 0.1);
+  line-height: 1.5;
+}
+
+.breeding-due-message svg,
+.breeding-failed-note svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  color: #b77908;
+}
+
+.breeding-due-message p,
+.breeding-result-choice p,
+.breeding-reschedule-form p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.breeding-result-choice,
+.breeding-birth-form,
+.breeding-failed-form,
+.breeding-reschedule-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+  color: var(--color-text-secondary, #51645a);
+}
+
+.breeding-result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.breeding-result-actions > button {
+  min-height: 48px;
+  flex: 1 1 180px;
+}
+
+.breeding-birth-form-intro {
+  color: var(--color-text-secondary, #51645a);
+  line-height: 1.5;
+}
+
+.breeding-birth-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  min-width: 0;
+}
+
+.breeding-newborn-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid var(--color-border, #dce9df);
+  border-radius: 14px;
+  background: var(--color-surface, #fff);
+}
+
+.breeding-newborn-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--color-text-primary, #123c24);
+}
+
+.breeding-remove-newborn {
+  min-height: 36px;
+  padding: 6px 10px;
+  border: 1px solid var(--color-border, #dce9df);
+  border-radius: 9px;
+  color: var(--color-danger, #b42318);
+  background: var(--color-surface, #fff);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.breeding-add-newborn {
+  align-self: flex-start;
+  min-height: 44px;
+}
+
+.breeding-form-error {
+  padding: 11px 13px;
+  border: 1px solid rgba(180, 35, 24, 0.28);
+  border-radius: 11px;
+  color: var(--color-danger, #b42318);
+  background: rgba(220, 38, 38, 0.08);
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.breeding-due-alert-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+  padding: 12px 18px max(12px, env(safe-area-inset-bottom, 12px)) !important;
+}
+
+.breeding-due-alert-footer > button {
+  min-height: 46px;
+}
+
+[data-theme="dark"] .breeding-due-animal-summary,
+[data-theme="dark"] .breeding-newborn-card,
+[data-theme="dark"] .breeding-remove-newborn {
+  background: var(--color-surface-elevated, rgba(255, 255, 255, 0.04));
+}
+
+[data-theme="dark"] .breeding-due-message,
+[data-theme="dark"] .breeding-failed-note {
+  color: #f1d28e;
+}
+
+@media (max-width: 480px) {
+  .breeding-due-alert-modal {
+    width: calc(100vw - 12px) !important;
+    max-height: calc(100dvh - 12px) !important;
+    border-radius: 17px !important;
+  }
+
+  .breeding-due-alert-body {
+    gap: 12px;
+    padding: 12px !important;
+  }
+
+  .breeding-due-animal-summary {
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .breeding-due-animal-mark {
+    width: 44px;
+    height: 44px;
+    flex-basis: 44px;
+    border-radius: 13px;
+    font-size: 20px;
+  }
+
+  .breeding-due-animal-copy strong {
+    font-size: 18px;
+  }
+
+  .breeding-due-message,
+  .breeding-failed-note {
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  .breeding-birth-fields {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .breeding-newborn-card {
+    padding: 11px;
+  }
+
+  .breeding-due-alert-footer {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 10px 12px max(10px, env(safe-area-inset-bottom, 10px)) !important;
+  }
+
+  .breeding-due-alert-footer > button {
+    width: 100%;
+    min-width: 0;
+    white-space: normal;
+    line-height: 1.2;
+  }
+
+  .breeding-due-alert-footer > button:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .breeding-result-actions > button {
+    width: 100%;
+    flex-basis: 100%;
+  }
+}

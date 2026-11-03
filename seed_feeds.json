@@ -1,0 +1,12 @@
+[
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"f01900fd-9921-454c-a3b7-fb58f0332208","record_date":"2026-07-01","feed_type":"Napier Grass (Penisetum purpureum)","quantity_kg":3.5,"cost":52.50},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"f01900fd-9921-454c-a3b7-fb58f0332208","record_date":"2026-07-08","feed_type":"Rice Bran","quantity_kg":0.5,"cost":15.00},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"47945bd2-dcb2-4a72-94d0-b04ffe9cf473","record_date":"2026-07-01","feed_type":"Napier Grass (Penisetum purpureum)","quantity_kg":5.0,"cost":75.00},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"47945bd2-dcb2-4a72-94d0-b04ffe9cf473","record_date":"2026-07-08","feed_type":"Commercial Goat Pellets","quantity_kg":1.0,"cost":80.00},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"d2b01589-814e-463b-af28-253e19dc462a","record_date":"2026-07-01","feed_type":"Napier Grass (Penisetum purpureum)","quantity_kg":2.5,"cost":37.50},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"50d0e6f7-fa43-4758-9d8d-2c7b78ce017b","record_date":"2026-07-01","feed_type":"Napier Grass (Penisetum purpureum)","quantity_kg":4.0,"cost":60.00},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"50d0e6f7-fa43-4758-9d8d-2c7b78ce017b","record_date":"2026-07-08","feed_type":"Corn Grits / Ground Corn","quantity_kg":0.5,"cost":20.00},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"76df19ee-b5f6-4f45-83ef-49c32768e094","record_date":"2026-07-01","feed_type":"Napier Grass (Penisetum purpureum)","quantity_kg":5.5,"cost":82.50},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"e04074b0-25e4-4bdc-bcef-e691987ba614","record_date":"2026-07-01","feed_type":"Napier Grass (Penisetum purpureum)","quantity_kg":4.5,"cost":67.50},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"525bc9ee-3af1-4eeb-99c9-141f10838def","record_date":"2026-07-01","feed_type":"Napier Grass (Penisetum purpureum)","quantity_kg":4.0,"cost":60.00}
+]

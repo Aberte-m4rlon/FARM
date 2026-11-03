@@ -1,0 +1,6 @@
+goat
+eye_discharge
+nasal_discharge
+skin_lesion
+abnormal_posture
+possible_lameness

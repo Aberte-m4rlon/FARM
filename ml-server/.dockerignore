@@ -1,0 +1,13 @@
+.venv
+__pycache__
+**/__pycache__
+*.py[cod]
+models
+*.pt
+*.onnx
+sheep_goat
+processed_sheep_goat_yolo
+datasets
+runs
+.env
+.env.*

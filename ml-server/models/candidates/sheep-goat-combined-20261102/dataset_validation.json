@@ -1,0 +1,52 @@
+{
+  "data_yaml": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\sheep_goat_combined_20261102\\data.yaml",
+  "dataset_root": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\sheep_goat_combined_20261102",
+  "classes": [
+    "goat",
+    "sheep"
+  ],
+  "splits": {
+    "train": {
+      "image_directory": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\sheep_goat_combined_20261102\\images\\train",
+      "images": 447,
+      "negative_images": 17,
+      "instances": {
+        "goat": 1466,
+        "sheep": 2519
+      },
+      "labels_sha256": "31be1e85d109cf36865a63a50776b2b24225b0186dbb3451b788c3cf55c6bc9c"
+    },
+    "val": {
+      "image_directory": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\sheep_goat_combined_20261102\\images\\val",
+      "images": 113,
+      "negative_images": 0,
+      "instances": {
+        "goat": 449,
+        "sheep": 1241
+      },
+      "labels_sha256": "d3de5932a335b5bc473bd81ca8059a125458cac6b69710909df7a43881984e8f"
+    },
+    "test": {
+      "image_directory": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\sheep_goat_combined_20261102\\images\\test",
+      "images": 107,
+      "negative_images": 0,
+      "instances": {
+        "goat": 57,
+        "sheep": 763
+      },
+      "labels_sha256": "0f6abf87fe692cb73431fc96b05a803cde789a7169d8c183cd286288071fdbaa"
+    }
+  },
+  "duplicate_images_across_splits": [],
+  "group_isolation": {
+    "manifest": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\sheep_goat_combined_20261102\\groups.csv",
+    "unique_groups": 3,
+    "verified": true
+  },
+  "total_instances": {
+    "goat": 1972,
+    "sheep": 4523
+  },
+  "dataset_fingerprint_sha256": "9f111706f0dae2e52b985460a8ee5f6ac5de73dc7b106bd1c55ac0429f8f9de5",
+  "validation_passed": true
+}

@@ -1,0 +1,210 @@
+{
+  "dataset_audit": {
+    "original_archive_sha256": "86a806dd720e77530be29535fd93ee032c420c28896b7496b0b521822be12832",
+    "images": 107,
+    "labels": 107,
+    "valid_boxes": 820,
+    "class_instances": {
+      "sheep": 763,
+      "goat": 57
+    },
+    "missing_labels": 0,
+    "orphan_labels": 0,
+    "invalid_rows": 0,
+    "visual_review_completed": true,
+    "labels_changed": false
+  },
+  "prepared_temporal_copy": {
+    "dataset": "sheep_goat_all_temporal_20261101_v1",
+    "source_dataset": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\sheep_goat_all_original\\sheep_goat_dataset",
+    "source_archive_sha256": "86a806dd720e77530be29535fd93ee032c420c28896b7496b0b521822be12832",
+    "source_video_sha256": "b85069265aa8e2890f85d4ee69cb9fb1a2a731ccc9c749e527509cd62a12f199",
+    "source_video_fps": 15.000466635557629,
+    "sample_interval_seconds": 10,
+    "approximate_source_frame_stride": 150,
+    "class_map": {
+      "0": "sheep",
+      "1": "goat"
+    },
+    "labels_copied_without_changes": true,
+    "excluded_gap_sample_ranges": [
+      [
+        59,
+        63
+      ],
+      [
+        73,
+        98
+      ]
+    ],
+    "splits": {
+      "train": {
+        "first_sample": 1,
+        "last_sample": 58,
+        "images": 58,
+        "instances": {
+          "sheep": 513,
+          "goat": 31
+        }
+      },
+      "val": {
+        "first_sample": 64,
+        "last_sample": 72,
+        "images": 9,
+        "instances": {
+          "sheep": 51,
+          "goat": 7
+        }
+      },
+      "test": {
+        "first_sample": 99,
+        "last_sample": 107,
+        "images": 9,
+        "instances": {
+          "sheep": 41,
+          "goat": 18
+        }
+      }
+    },
+    "temporal_gaps": {
+      "train_to_val_source_frames": 750,
+      "val_to_test_source_frames": 3900,
+      "minimum_required_source_frames": 750
+    },
+    "same_source_video_warning": "All partitions come from one video. The test split is a later temporal holdout, not independent-camera or production evidence."
+  },
+  "candidate_manifest": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\models\\candidates\\sheep-goat-all-20261101-v3\\manifest.json",
+  "test_metrics_pytorch": {
+    "confidence_used_for_validation": 0.001,
+    "precision_at_best_f1": 0.7571877557925994,
+    "recall_at_best_f1": 0.14634146341463414,
+    "map50": 0.2614516822309764,
+    "map50_95": 0.10940468724583137,
+    "per_class": {
+      "sheep": {
+        "precision_at_best_f1": 0.5143755115851988,
+        "recall_at_best_f1": 0.2926829268292683,
+        "map50_95": 0.15246604210061127
+      },
+      "goat": {
+        "precision_at_best_f1": 1.0,
+        "recall_at_best_f1": 0.0,
+        "map50_95": 0.0663433323910515
+      }
+    },
+    "confusion_matrix": null,
+    "production_threshold_confusion_matrix": null,
+    "production_threshold": 0.6
+  },
+  "test_metrics_onnx": {
+    "confidence_used_for_validation": 0.001,
+    "precision_at_best_f1": 0.7769266228675309,
+    "recall_at_best_f1": 0.13633924554027912,
+    "map50": 0.2826947715116188,
+    "map50_95": 0.10903370168642508,
+    "per_class": {
+      "sheep": {
+        "precision_at_best_f1": 0.5538532457350619,
+        "recall_at_best_f1": 0.27267849108055825,
+        "map50_95": 0.15964040508489755
+      },
+      "goat": {
+        "precision_at_best_f1": 1.0,
+        "recall_at_best_f1": 0.0,
+        "map50_95": 0.05842699828795259
+      }
+    },
+    "confusion_matrix": null,
+    "production_threshold_confusion_matrix": null,
+    "production_threshold": 0.6
+  },
+  "error_analysis": {
+    "0.050": {
+      "test_images": 9,
+      "test_ground_truth_boxes": {
+        "sheep": 41,
+        "goat": 18
+      },
+      "test_predictions": {
+        "sheep": 478,
+        "goat": 9
+      },
+      "test_per_class_iou_0_5": {
+        "sheep": {
+          "true_positives_iou_0_5": 24,
+          "false_positives_iou_0_5": 454,
+          "false_negatives_iou_0_5": 17,
+          "precision_iou_0_5": 0.0502,
+          "recall_iou_0_5": 0.5854
+        },
+        "goat": {
+          "true_positives_iou_0_5": 2,
+          "false_positives_iou_0_5": 7,
+          "false_negatives_iou_0_5": 16,
+          "precision_iou_0_5": 0.2222,
+          "recall_iou_0_5": 0.1111
+        }
+      },
+      "test_matched_class_confusion_counts": {
+        "true_sheep_predicted_sheep": 24,
+        "true_sheep_predicted_goat": 0,
+        "true_goat_predicted_sheep": 11,
+        "true_goat_predicted_goat": 2
+      },
+      "overlay_contact_sheet": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\models\\candidates\\sheep-goat-all-20261101-v3\\error_analysis\\test_errors_conf_0.050.jpg"
+    },
+    "0.600": {
+      "test_images": 9,
+      "test_ground_truth_boxes": {
+        "sheep": 41,
+        "goat": 18
+      },
+      "test_predictions": {
+        "sheep": 23,
+        "goat": 0
+      },
+      "test_per_class_iou_0_5": {
+        "sheep": {
+          "true_positives_iou_0_5": 11,
+          "false_positives_iou_0_5": 12,
+          "false_negatives_iou_0_5": 30,
+          "precision_iou_0_5": 0.4783,
+          "recall_iou_0_5": 0.2683
+        },
+        "goat": {
+          "true_positives_iou_0_5": 0,
+          "false_positives_iou_0_5": 0,
+          "false_negatives_iou_0_5": 18,
+          "precision_iou_0_5": 0.0,
+          "recall_iou_0_5": 0.0
+        }
+      },
+      "test_matched_class_confusion_counts": {
+        "true_sheep_predicted_sheep": 11,
+        "true_sheep_predicted_goat": 0,
+        "true_goat_predicted_sheep": 3,
+        "true_goat_predicted_goat": 0
+      },
+      "overlay_contact_sheet": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\models\\candidates\\sheep-goat-all-20261101-v3\\error_analysis\\test_errors_conf_0.600.jpg"
+    }
+  },
+  "real_tapo_validation": {
+    "status": "not_performed",
+    "reason": "gateway diagnostics from this workstation reported the API unavailable or not configured, the Tapo camera network unreachable, and no decoded stream.",
+    "api": "unavailable_or_not_configured",
+    "camera_network": "unreachable",
+    "decoded_tapo_frames": 0,
+    "dataset_video_used_as_proxy": false
+  },
+  "active_weights": {
+    "sha256": "4b7896863754dfb56ae138e6847e56cc9f1cfaa0be2869c605a5b89247a0ab9e",
+    "matches_candidate_starting_checkpoint": true,
+    "modified_or_promoted": false
+  },
+  "unit_checks": {
+    "dataset_pipeline_tests": "8 passed",
+    "species_detector_tests": "15 passed",
+    "python_compile": "passed"
+  },
+  "recommendation": "Keep the candidate out of production: class recall, especially goat recall, is not adequate and real Tapo footage was not reachable for validation."
+}

@@ -1,0 +1,9 @@
+path: .
+train: images/train
+val: images/val
+test: images/test
+nc: 2
+names:
+  0: goat
+  1: sheep
+group_manifest: groups.csv

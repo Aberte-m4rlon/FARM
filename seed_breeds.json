@@ -1,0 +1,7 @@
+[
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"50d0e6f7-fa43-4758-9d8d-2c7b78ce017b","partner_id":"76df19ee-b5f6-4f45-83ef-49c32768e094","mating_date":"2026-03-01","expected_kidding_date":"2026-07-29","status":"Pregnant"},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"f01900fd-9921-454c-a3b7-fb58f0332208","partner_id":"47945bd2-dcb2-4a72-94d0-b04ffe9cf473","mating_date":"2026-01-15","expected_kidding_date":"2026-06-14","status":"Kidded"},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"e04074b0-25e4-4bdc-bcef-e691987ba614","partner_id":"47945bd2-dcb2-4a72-94d0-b04ffe9cf473","mating_date":"2026-05-01","expected_kidding_date":"2026-09-28","status":"Pregnant"},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"d2b01589-814e-463b-af28-253e19dc462a","partner_id":"cc1749be-6de8-40d5-8d79-dae0e64383db","mating_date":"2025-12-01","expected_kidding_date":"2026-04-30","status":"Kidded"},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","animal_id":"5a3a3e83-2ccd-4089-bf73-283da39bf35b","partner_id":"525bc9ee-3af1-4eeb-99c9-141f10838def","mating_date":"2025-11-01","expected_kidding_date":"2026-03-31","status":"Failed"}
+]

@@ -1,0 +1,52 @@
+{
+  "data_yaml": "C:\\Users\\asiva\\Downloads\\AlpasFarmSpeciesExperiment-20261011\\data.yaml",
+  "dataset_root": "C:\\Users\\asiva\\Downloads\\AlpasFarmSpeciesExperiment-20261011",
+  "classes": [
+    "goat",
+    "sheep"
+  ],
+  "splits": {
+    "train": {
+      "image_directory": "C:\\Users\\asiva\\Downloads\\AlpasFarmSpeciesExperiment-20261011\\images\\train",
+      "images": 10,
+      "negative_images": 0,
+      "instances": {
+        "goat": 27,
+        "sheep": 20
+      },
+      "labels_sha256": "46e02a1e83ef0373b78deecb2c8dcab3c05bc583c6591603ce0de2da31fdd51d"
+    },
+    "val": {
+      "image_directory": "C:\\Users\\asiva\\Downloads\\AlpasFarmSpeciesExperiment-20261011\\images\\val",
+      "images": 2,
+      "negative_images": 0,
+      "instances": {
+        "goat": 4,
+        "sheep": 6
+      },
+      "labels_sha256": "1b90cfaa1d031c96b10e07d22a76dc91b9c7fc01c8abca4f327314cc176d9775"
+    },
+    "test": {
+      "image_directory": "C:\\Users\\asiva\\Downloads\\AlpasFarmSpeciesExperiment-20261011\\images\\test",
+      "images": 2,
+      "negative_images": 0,
+      "instances": {
+        "goat": 8,
+        "sheep": 4
+      },
+      "labels_sha256": "672ba8498b3c63103d3a35a8c3e840aac2e13b131c4328baa4cacacde84c7ebf"
+    }
+  },
+  "duplicate_images_across_splits": [],
+  "group_isolation": {
+    "manifest": "C:\\Users\\asiva\\Downloads\\AlpasFarmSpeciesExperiment-20261011\\groups.csv",
+    "unique_groups": 14,
+    "verified": true
+  },
+  "total_instances": {
+    "goat": 39,
+    "sheep": 30
+  },
+  "dataset_fingerprint_sha256": "32cba8dafa65182aa67e8ca16756e1d7a4cb0388dd8eef79831fc56784128908",
+  "validation_passed": true
+}

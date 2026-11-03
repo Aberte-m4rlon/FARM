@@ -1,0 +1,115 @@
+.breeding-due-list {
+  padding: 18px;
+  border: 1px solid rgba(217, 145, 12, 0.3);
+  border-radius: 18px;
+  background: var(--color-surface, #fff);
+  box-shadow: 0 8px 24px rgba(126, 82, 12, 0.06);
+}
+
+.breeding-due-list-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.breeding-due-list-heading h2 {
+  margin: 0;
+  color: var(--color-text-primary, #173c25);
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.breeding-due-list-heading p {
+  margin: 4px 0 0;
+  color: var(--color-text-secondary, #63736a);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.breeding-due-list-count {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  border-radius: 13px;
+  color: #704b05;
+  background: rgba(245, 158, 11, 0.16);
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.breeding-due-list-items {
+  display: flex;
+  flex-direction: column;
+}
+
+.breeding-due-list-item {
+  display: grid;
+  grid-template-columns: minmax(150px, 1fr) minmax(160px, auto) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid var(--color-border-light, #edf2ee);
+}
+
+.breeding-due-list-animal {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.breeding-due-list-animal strong {
+  color: var(--color-text-primary, #173c25);
+  overflow-wrap: anywhere;
+}
+
+.breeding-due-list-animal span,
+.breeding-due-list-date {
+  color: var(--color-text-secondary, #63736a);
+  font-size: 12px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+[data-theme="dark"] .breeding-due-list {
+  background: var(--color-surface, #17221a);
+}
+
+@media (max-width: 640px) {
+  .breeding-due-list {
+    padding: 14px;
+  }
+
+  .breeding-due-list-item {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px 12px;
+  }
+
+  .breeding-due-list-date {
+    grid-column: 1;
+  }
+
+  .breeding-due-list-item > button {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    max-width: 150px;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 360px) {
+  .breeding-due-list-item {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .breeding-due-list-item > button {
+    grid-column: 1;
+    grid-row: auto;
+    max-width: none;
+    width: 100%;
+  }
+}

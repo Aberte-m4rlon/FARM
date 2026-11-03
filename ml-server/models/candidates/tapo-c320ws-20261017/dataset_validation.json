@@ -1,0 +1,76 @@
+{
+  "data_yaml": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\tapo_c320ws_2026-10-17\\data.yaml",
+  "dataset_root": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\tapo_c320ws_2026-10-17",
+  "classes": [
+    "goat",
+    "sheep"
+  ],
+  "splits": {
+    "train": {
+      "image_directory": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\tapo_c320ws_2026-10-17\\images\\train",
+      "images": 239,
+      "negative_images": 1,
+      "instances": {
+        "goat": 901,
+        "sheep": 1360
+      },
+      "labels_sha256": "6a539762c5bef16530f501217b9b3feaf4f1f4e5ae0035600803a0e3832c5e49"
+    },
+    "val": {
+      "image_directory": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\tapo_c320ws_2026-10-17\\images\\val",
+      "images": 69,
+      "negative_images": 0,
+      "instances": {
+        "goat": 290,
+        "sheep": 12
+      },
+      "labels_sha256": "7de616e7f28a9108c21db0ae265e78422c142ec37f999a8bf1946665f382d4a4"
+    },
+    "test": {
+      "image_directory": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\tapo_c320ws_2026-10-17\\images\\test",
+      "images": 139,
+      "negative_images": 16,
+      "instances": {
+        "goat": 275,
+        "sheep": 1147
+      },
+      "labels_sha256": "b0299bcd5879b3129a60e9b0aaa2f649672b7a20ffe78d72ed8007b48bcd10b2"
+    }
+  },
+  "duplicate_images_across_splits": [],
+  "group_isolation": {
+    "manifest": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\tapo_c320ws_2026-10-17\\groups.csv",
+    "unique_temporal_segments": 3,
+    "verified": false,
+    "reason": "One source video spans the splits; independent source-group isolation is not established."
+  },
+  "temporal_holdout": {
+    "verified": true,
+    "source_video_count": 1,
+    "source_video_id": "17921026488091792031676490_0_mp4",
+    "minimum_unused_frames_between_splits": 24,
+    "split_frame_ranges": {
+      "train": {
+        "first_frame": 0,
+        "last_frame": 249
+      },
+      "val": {
+        "first_frame": 275,
+        "last_frame": 350
+      },
+      "test": {
+        "first_frame": 376,
+        "last_frame": 524
+      }
+    },
+    "independent_source_evaluation": false,
+    "promotion_eligible": false,
+    "warning": "This measures a later time segment from the same video, not generalization to a separate recording or camera session."
+  },
+  "total_instances": {
+    "goat": 1466,
+    "sheep": 2519
+  },
+  "dataset_fingerprint_sha256": "057b9024e4a0d2ee8857fc329e780c1cf4f3155fff66dd709382f89e00d15e6d",
+  "validation_passed": true
+}

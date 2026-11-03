@@ -1,0 +1,10 @@
+[
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","name":"Napier Grass","category":"Feed","quantity":200,"unit":"kg","minimum_stock":50,"cost":3.00},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","name":"Rice Bran","category":"Feed","quantity":50,"unit":"kg","minimum_stock":20,"cost":18.00},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","name":"Commercial Goat Pellets","category":"Feed","quantity":25,"unit":"kg","minimum_stock":10,"cost":75.00},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","name":"PPR Vaccine","category":"Vaccines","quantity":20,"unit":"vials","minimum_stock":5,"cost":150.00},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","name":"Albendazole (Dewormer)","category":"Medicine","quantity":30,"unit":"tablets","minimum_stock":10,"cost":8.50},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","name":"Oxytetracycline (Antibiotic)","category":"Medicine","quantity":10,"unit":"vials","minimum_stock":3,"cost":95.00},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","name":"Syringe (10 mL)","category":"Supplies","quantity":50,"unit":"pcs","minimum_stock":20,"cost":5.00},
+  {"user_id":"d586af66-5435-4d29-b727-d93d3a9ab479","name":"Ear Tags","category":"Supplies","quantity":100,"unit":"pcs","minimum_stock":30,"cost":12.00}
+]

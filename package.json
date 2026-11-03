@@ -1,0 +1,50 @@
+{
+  "name": "alpasfarm",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:phone": "node scripts/dev-phone.mjs",
+    "dev:api": "node scripts/dev-local-api.mjs",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "preview:lan": "node scripts/preview-lan.mjs",
+    "test:gate": "node --test tests/gate-domain.test.mjs",
+    "test:breeding": "node --test tests/breeding-workflow.test.mjs",
+    "test:lifecycle": "node --test tests/animal-lifecycle.test.mjs",
+    "test:security": "node --test tests/request-security.test.mjs",
+    "test:alerts": "node --test tests/daily-alert-matching.test.mjs"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.7.1",
+    "@supabase/supabase-js": "^2.45.4",
+    "chart.js": "^4.4.4",
+    "dayjs": "^1.11.21",
+    "firebase": "^12.19.0",
+    "html2canvas": "^1.4.1",
+    "html5-qrcode": "^2.3.8",
+    "jspdf": "^4.2.1",
+    "lucide-react": "^1.45.0",
+    "qrcode": "^1.5.4",
+    "qrcode.react": "^4.2.0",
+    "react": "^18.3.1",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.84.0",
+    "react-hot-toast": "^2.6.0",
+    "react-router-dom": "^6.30.4",
+    "recharts": "^3.10.1",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/qrcode": "^1.5.5",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@vercel/node": "^5.10.1",
+    "@vitejs/plugin-react": "^4.3.1",
+    "jpeg-js": "^0.4.4",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.3"
+  }
+}

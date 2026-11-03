@@ -1,0 +1,156 @@
+{
+  "model_version": "goat-sheep-exp-20261011",
+  "status": "candidate_evaluated",
+  "created_at_utc": "2026-10-10T21:07:34+00:00",
+  "training_config": {
+    "model_version": "goat-sheep-exp-20261011",
+    "dataset_yaml": "C:\\Users\\asiva\\Downloads\\AlpasFarmSpeciesExperiment-20261011\\data.yaml",
+    "dataset_fingerprint_sha256": "32cba8dafa65182aa67e8ca16756e1d7a4cb0388dd8eef79831fc56784128908",
+    "starting_weights": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\models\\best.pt",
+    "starting_weights_sha256": "b3fb34569081c821b7338f4823f2d123b4a4529b191a26f2ed5181e02fe8621b",
+    "epochs": 50,
+    "batch": 8,
+    "image_size": 640,
+    "seed": 42,
+    "workers": 0,
+    "device": "cpu",
+    "confidence_threshold": 0.6,
+    "training_started_at": "2026-10-10T21:04:06+00:00",
+    "torch_version": "2.14.1+cpu"
+  },
+  "dataset": {
+    "data_yaml": "C:\\Users\\asiva\\Downloads\\AlpasFarmSpeciesExperiment-20261011\\data.yaml",
+    "dataset_root": "C:\\Users\\asiva\\Downloads\\AlpasFarmSpeciesExperiment-20261011",
+    "classes": [
+      "goat",
+      "sheep"
+    ],
+    "splits": {
+      "train": {
+        "image_directory": "C:\\Users\\asiva\\Downloads\\AlpasFarmSpeciesExperiment-20261011\\images\\train",
+        "images": 10,
+        "negative_images": 0,
+        "instances": {
+          "goat": 27,
+          "sheep": 20
+        },
+        "labels_sha256": "46e02a1e83ef0373b78deecb2c8dcab3c05bc583c6591603ce0de2da31fdd51d"
+      },
+      "val": {
+        "image_directory": "C:\\Users\\asiva\\Downloads\\AlpasFarmSpeciesExperiment-20261011\\images\\val",
+        "images": 2,
+        "negative_images": 0,
+        "instances": {
+          "goat": 4,
+          "sheep": 6
+        },
+        "labels_sha256": "1b90cfaa1d031c96b10e07d22a76dc91b9c7fc01c8abca4f327314cc176d9775"
+      },
+      "test": {
+        "image_directory": "C:\\Users\\asiva\\Downloads\\AlpasFarmSpeciesExperiment-20261011\\images\\test",
+        "images": 2,
+        "negative_images": 0,
+        "instances": {
+          "goat": 8,
+          "sheep": 4
+        },
+        "labels_sha256": "672ba8498b3c63103d3a35a8c3e840aac2e13b131c4328baa4cacacde84c7ebf"
+      }
+    },
+    "duplicate_images_across_splits": [],
+    "group_isolation": {
+      "manifest": "C:\\Users\\asiva\\Downloads\\AlpasFarmSpeciesExperiment-20261011\\groups.csv",
+      "unique_groups": 14,
+      "verified": true
+    },
+    "total_instances": {
+      "goat": 39,
+      "sheep": 30
+    },
+    "dataset_fingerprint_sha256": "32cba8dafa65182aa67e8ca16756e1d7a4cb0388dd8eef79831fc56784128908",
+    "validation_passed": true
+  },
+  "test_metrics_pytorch": {
+    "confidence_used_for_validation": 0.001,
+    "precision_at_best_f1": 0.6672299842600652,
+    "recall_at_best_f1": 0.25,
+    "map50": 0.31540585839599,
+    "map50_95": 0.08975330264581909,
+    "per_class": {
+      "goat": {
+        "precision_at_best_f1": 0.3344599685201303,
+        "recall_at_best_f1": 0.5,
+        "map50_95": 0.09437327195830485
+      },
+      "sheep": {
+        "precision_at_best_f1": 1.0,
+        "recall_at_best_f1": 0.0,
+        "map50_95": 0.08513333333333332
+      }
+    },
+    "confusion_matrix": null,
+    "production_threshold_confusion_matrix": null,
+    "production_threshold": 0.6
+  },
+  "test_metrics_onnx": {
+    "confidence_used_for_validation": 0.001,
+    "precision_at_best_f1": 0.9037081197828485,
+    "recall_at_best_f1": 0.0625,
+    "map50": 0.14605069276965998,
+    "map50_95": 0.045075725519056725,
+    "per_class": {
+      "goat": {
+        "precision_at_best_f1": 0.807416239565697,
+        "recall_at_best_f1": 0.125,
+        "map50_95": 0.06578954627620869
+      },
+      "sheep": {
+        "precision_at_best_f1": 1.0,
+        "recall_at_best_f1": 0.0,
+        "map50_95": 0.02436190476190476
+      }
+    },
+    "confusion_matrix": null,
+    "production_threshold_confusion_matrix": null,
+    "production_threshold": 0.6
+  },
+  "export_comparison": {
+    "map50_delta": 0.16935516562633002,
+    "map50_95_delta": 0.04467757712676236,
+    "allowed_absolute_delta": 0.03,
+    "passed": false
+  },
+  "inference_benchmark": {
+    "pytorch": {
+      "images": 1,
+      "warmup_images": 1,
+      "latency_ms_average": 255.67,
+      "latency_ms_p50": 255.67,
+      "latency_ms_p95": 255.67,
+      "fps_from_average_latency": 3.91,
+      "device": "cpu"
+    },
+    "onnx_cpu": {
+      "images": 1,
+      "warmup_images": 1,
+      "latency_ms_average": 140.58,
+      "latency_ms_p50": 140.58,
+      "latency_ms_p95": 140.58,
+      "fps_from_average_latency": 7.11,
+      "device": "cpu"
+    }
+  },
+  "artifacts": {
+    "best_pt_sha256": "7172c2545bf39d4cae93a281add3b9a259b2fd139344b57b1b8dd30c80b3e28b",
+    "best_onnx_sha256": "b23027daeb9d356b65379fcbc2822bcd805e8da40357a23bc855149a116712c6",
+    "best_pt_bytes": 5467930,
+    "best_onnx_bytes": 10566005
+  },
+  "promotion_ready": false,
+  "promotion_blockers": [
+    "Run a separate validation on labeled AlpasFarm/Tapo C320WS footage before production use.",
+    "Verify false positives on empty-gate, people, dogs, objects, day, and night footage.",
+    "ONNX test metrics exceed the configured PyTorch-to-ONNX tolerance."
+  ],
+  "cctv_validation": "not_run"
+}

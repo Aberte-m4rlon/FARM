@@ -1,0 +1,45 @@
+{
+  "map": {
+    "confidence": 0.001,
+    "precision": 0.3849444559030653,
+    "recall": 0.35025917413014185,
+    "map50": 0.33170565729365403,
+    "map50_95": 0.15907901722254694,
+    "per_class": {
+      "goat": {
+        "precision": 0.13387123110418556,
+        "recall": 0.13818181818181818,
+        "map50_95": 0.025686772907384303
+      },
+      "sheep": {
+        "precision": 0.6360176807019451,
+        "recall": 0.5623365300784655,
+        "map50_95": 0.2924712615377096
+      }
+    },
+    "images": 139,
+    "source_dataset": "My First Project.v1i.yolov8, test split; source video 17921026488091792031676490_0_mp4"
+  },
+  "operating_point": {
+    "confidence": 0.25,
+    "precision": 0.3849444559030653,
+    "recall": 0.35025917413014185,
+    "map50": 0.2744850221754001,
+    "map50_95": 0.13523126618182357,
+    "per_class": {
+      "goat": {
+        "precision": 0.13387123110418556,
+        "recall": 0.13818181818181818,
+        "map50_95": 0.020676714575899376
+      },
+      "sheep": {
+        "precision": 0.6360176807019451,
+        "recall": 0.5623365300784655,
+        "map50_95": 0.2497858177877478
+      }
+    },
+    "images": 139,
+    "source_dataset": "My First Project.v1i.yolov8, test split; source video 17921026488091792031676490_0_mp4"
+  },
+  "independence_note": "This test split is from a different source video than the training dataset GOATS-SHEEPS/4280_mp4."
+}

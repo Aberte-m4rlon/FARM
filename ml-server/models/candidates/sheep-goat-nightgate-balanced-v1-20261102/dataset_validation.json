@@ -1,0 +1,76 @@
+{
+  "data_yaml": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\sheep_goat_nightgate_balanced_20261102\\data.yaml",
+  "dataset_root": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\sheep_goat_nightgate_balanced_20261102",
+  "classes": [
+    "sheep",
+    "goat"
+  ],
+  "splits": {
+    "train": {
+      "image_directory": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\sheep_goat_nightgate_balanced_20261102\\images\\train",
+      "images": 106,
+      "negative_images": 0,
+      "instances": {
+        "sheep": 807,
+        "goat": 124
+      },
+      "labels_sha256": "0ccfdcdbd765248290d43a1dcecd7650facba9c3c1ffe6dd7a465772acb071ba"
+    },
+    "val": {
+      "image_directory": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\sheep_goat_nightgate_balanced_20261102\\images\\val",
+      "images": 9,
+      "negative_images": 0,
+      "instances": {
+        "sheep": 51,
+        "goat": 7
+      },
+      "labels_sha256": "61a025e3afd2e894868cad85df2096019dddfadc9371730137aec1be32e44d87"
+    },
+    "test": {
+      "image_directory": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\sheep_goat_nightgate_balanced_20261102\\images\\test",
+      "images": 9,
+      "negative_images": 0,
+      "instances": {
+        "sheep": 41,
+        "goat": 18
+      },
+      "labels_sha256": "78571b73b298748a4673fce06903bf967e090db21b75226fc8a64cea53b68284"
+    }
+  },
+  "duplicate_images_across_splits": [],
+  "group_isolation": {
+    "manifest": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\sheep_goat_nightgate_balanced_20261102\\groups.csv",
+    "unique_temporal_segments": 3,
+    "verified": false,
+    "reason": "One source video spans the splits; independent source-group isolation is not established."
+  },
+  "temporal_holdout": {
+    "verified": true,
+    "source_video_count": 1,
+    "source_video_id": "5590_mp4",
+    "minimum_unused_frames_between_splits": 750,
+    "split_frame_ranges": {
+      "train": {
+        "first_frame": 0,
+        "last_frame": 8550
+      },
+      "val": {
+        "first_frame": 9450,
+        "last_frame": 10650
+      },
+      "test": {
+        "first_frame": 14700,
+        "last_frame": 15900
+      }
+    },
+    "independent_source_evaluation": false,
+    "promotion_eligible": false,
+    "warning": "This measures a later time segment from the same video, not generalization to a separate recording or camera session."
+  },
+  "total_instances": {
+    "sheep": 899,
+    "goat": 149
+  },
+  "dataset_fingerprint_sha256": "26cc2f2db89d56b370754826529c06b28111cd18471db1b72060e599683af0e8",
+  "validation_passed": true
+}

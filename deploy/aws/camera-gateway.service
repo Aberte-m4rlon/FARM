@@ -1,0 +1,32 @@
+[Unit]
+Description=ALPASFARM persistent camera gateway
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/alpasfarm/camera-gateway
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=CAMERA_GATEWAY_ENV_FILE=/etc/alpasfarm/camera-gateway.env
+Environment=YOLO_CONFIG_DIR=/var/lib/alpasfarm-camera-gateway/ultralytics
+Environment=TORCH_HOME=/var/lib/alpasfarm-camera-gateway/torch
+Environment=OMP_NUM_THREADS=1
+Environment=MKL_NUM_THREADS=1
+ExecStart=/home/ubuntu/alpasfarm/camera-gateway/.venv/bin/python /home/ubuntu/alpasfarm/camera-gateway/gateway.py
+Restart=on-failure
+RestartSec=5
+StateDirectory=alpasfarm-camera-gateway
+StateDirectoryMode=0750
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/var/lib/alpasfarm-camera-gateway
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,39 @@
+{
+  "evaluation": "same 139-image chronological test split from one source video; not independent camera-session evidence",
+  "dataset_fingerprint_sha256": "057b9024e4a0d2ee8857fc329e780c1cf4f3155fff66dd709382f89e00d15e6d",
+  "images": 139,
+  "instances": 1422,
+  "image_size": 640,
+  "baseline_checkpoint_sha256": "b3fb34569081c821b7338f4823f2d123b4a4529b191a26f2ed5181e02fe8621b",
+  "candidate_checkpoint_sha256": "4b7896863754dfb56ae138e6847e56cc9f1cfaa0be2869c605a5b89247a0ab9e",
+  "confidence_0_001": {
+    "baseline": {
+      "precision": 0.0940082970200984,
+      "recall": 0.1820908298327653,
+      "map50": 0.036388202732842705,
+      "map50_95": 0.016085644797213052
+    },
+    "candidate": {
+      "precision": 0.16856264051558034,
+      "recall": 0.1806229690100658,
+      "map50": 0.08316949204241766,
+      "map50_95": 0.024424612221058885
+    }
+  },
+  "confidence_0_60": {
+    "baseline": {
+      "precision": 0.5,
+      "recall": 0.00043591979075850045,
+      "map50": 0.0025,
+      "map50_95": 0.0022499999999999994
+    },
+    "candidate": {
+      "precision": 0.19714039461938623,
+      "recall": 0.13627486724260918,
+      "map50": 0.05289891734517607,
+      "map50_95": 0.016530469996524032
+    }
+  },
+  "promotion_ready": false,
+  "promotion_note": "Candidate improved over the current checkpoint on this single-video temporal split, but absolute accuracy and goat recall remain too low to deploy. Keep the existing production model until more independent labeled Tapo recordings are tested."
+}

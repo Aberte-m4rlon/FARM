@@ -1,0 +1,227 @@
+{
+  "model_version": "goats-sheeps-20261020-v1",
+  "status": "candidate_evaluated",
+  "created_at_utc": "2026-10-20T14:53:45+00:00",
+  "training_config": {
+    "model_version": "goats-sheeps-20261020-v1",
+    "dataset_yaml": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\goats_sheeps_2026-10-20\\data.yaml",
+    "dataset_fingerprint_sha256": "4dea0d4620e7a69b2d8a9023c11b196e5ecbdb4ba13b812cb1f3c4bf6d270094",
+    "starting_weights": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\camera-gateway\\yolo11n.pt",
+    "starting_weights_sha256": "0ebbc80d4a7680d14987a577cd21342b65ecfd94632bd9a8da63ae6417644ee1",
+    "epochs": 50,
+    "batch": 8,
+    "image_size": 512,
+    "seed": 42,
+    "workers": 0,
+    "device": "cpu",
+    "confidence_threshold": 0.25,
+    "training_started_at": "2026-10-20T14:19:57+00:00",
+    "torch_version": "2.14.1+cpu"
+  },
+  "dataset": {
+    "data_yaml": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\goats_sheeps_2026-10-20\\data.yaml",
+    "dataset_root": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\goats_sheeps_2026-10-20",
+    "classes": [
+      "goat",
+      "sheep"
+    ],
+    "splits": {
+      "train": {
+        "image_directory": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\goats_sheeps_2026-10-20\\images\\train",
+        "images": 78,
+        "negative_images": 0,
+        "instances": {
+          "goat": 240,
+          "sheep": 731
+        },
+        "labels_sha256": "1d089ea75a9cbf4500a650bc3f1b6311efe75d251b734cd35ad1751e1c563206"
+      },
+      "val": {
+        "image_directory": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\goats_sheeps_2026-10-20\\images\\val",
+        "images": 22,
+        "negative_images": 0,
+        "instances": {
+          "goat": 141,
+          "sheep": 308
+        },
+        "labels_sha256": "85fa25cd81eb3c0ea575656cdb278992e52215e1e89fa424b2fcc031a71204dc"
+      },
+      "test": {
+        "image_directory": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\goats_sheeps_2026-10-20\\images\\test",
+        "images": 13,
+        "negative_images": 0,
+        "instances": {
+          "goat": 68,
+          "sheep": 202
+        },
+        "labels_sha256": "ee91eaa2b44db6547b250e642603138dbac14f5536cd0fdb8ff18fd0d07c3cd5"
+      }
+    },
+    "duplicate_images_across_splits": [],
+    "group_isolation": {
+      "manifest": "C:\\Users\\asiva\\Downloads\\capstone-master\\ALPASFARM-work\\ml-server\\datasets\\goats_sheeps_2026-10-20\\groups.csv",
+      "unique_temporal_segments": 3,
+      "verified": false,
+      "reason": "One source video spans the splits; independent source-group isolation is not established."
+    },
+    "temporal_holdout": {
+      "verified": true,
+      "source_video_count": 1,
+      "source_video_id": "4280_mp4",
+      "minimum_unused_frames_between_splits": 6,
+      "split_frame_ranges": {
+        "train": {
+          "first_frame": 0,
+          "last_frame": 77
+        },
+        "val": {
+          "first_frame": 84,
+          "last_frame": 105
+        },
+        "test": {
+          "first_frame": 112,
+          "last_frame": 137
+        }
+      },
+      "independent_source_evaluation": false,
+      "promotion_eligible": false,
+      "warning": "This measures a later time segment from the same video, not generalization to a separate recording or camera session."
+    },
+    "total_instances": {
+      "goat": 449,
+      "sheep": 1241
+    },
+    "dataset_fingerprint_sha256": "4dea0d4620e7a69b2d8a9023c11b196e5ecbdb4ba13b812cb1f3c4bf6d270094",
+    "validation_passed": true
+  },
+  "test_metrics_pytorch": {
+    "confidence_used_for_validation": 0.001,
+    "precision_at_best_f1": 0.6093352060203558,
+    "recall_at_best_f1": 0.5917383234115405,
+    "map50": 0.5694081633514899,
+    "map50_95": 0.24800783746565447,
+    "per_class": {
+      "goat": {
+        "precision_at_best_f1": 0.7904890790438398,
+        "recall_at_best_f1": 0.7794117647058824,
+        "map50_95": 0.3939828837706646
+      },
+      "sheep": {
+        "precision_at_best_f1": 0.4281813329968719,
+        "recall_at_best_f1": 0.40406488211719865,
+        "map50_95": 0.10203279116064437
+      }
+    },
+    "confusion_matrix": null,
+    "production_threshold_confusion_matrix": null,
+    "production_threshold": 0.25
+  },
+  "test_metrics_onnx": {
+    "confidence_used_for_validation": 0.001,
+    "precision_at_best_f1": 0.6388687133131054,
+    "recall_at_best_f1": 0.625695431493362,
+    "map50": 0.5980692333710895,
+    "map50_95": 0.2694119827041691,
+    "per_class": {
+      "goat": {
+        "precision_at_best_f1": 0.8646349083182991,
+        "recall_at_best_f1": 0.8454502689273182,
+        "map50_95": 0.4335840369448727
+      },
+      "sheep": {
+        "precision_at_best_f1": 0.41310251830791156,
+        "recall_at_best_f1": 0.40594059405940597,
+        "map50_95": 0.10523992846346557
+      }
+    },
+    "confusion_matrix": null,
+    "production_threshold_confusion_matrix": null,
+    "production_threshold": 0.25
+  },
+  "export_comparison": {
+    "map50_delta": 0.02866107001959961,
+    "map50_95_delta": 0.021404145238514638,
+    "allowed_absolute_delta": 0.03,
+    "passed": true
+  },
+  "inference_benchmark": {
+    "pytorch": {
+      "images": 8,
+      "warmup_images": 5,
+      "latency_ms_average": 146.04,
+      "latency_ms_p50": 142.01,
+      "latency_ms_p95": 170.77,
+      "fps_from_average_latency": 6.85,
+      "device": "cpu"
+    },
+    "onnx_cpu": {
+      "images": 8,
+      "warmup_images": 5,
+      "latency_ms_average": 53.92,
+      "latency_ms_p50": 53.75,
+      "latency_ms_p95": 56.91,
+      "fps_from_average_latency": 18.54,
+      "device": "cpu"
+    }
+  },
+  "artifacts": {
+    "best_pt_sha256": "861cbd6533285095432d35ec6fe0a5b112dc766b7bc1340f41a84b2543078e8e",
+    "best_onnx_sha256": "1ee92d5830d10f7b92bf8c7da2809c71165bd525183e32e362f4adf5e46a7eff",
+    "best_pt_bytes": 5453850,
+    "best_onnx_bytes": 10505565
+  },
+  "promotion_ready": false,
+  "promotion_blockers": [
+    "Run a separate validation on labeled AlpasFarm/Tapo C320WS footage before production use.",
+    "Verify false positives on empty-gate, people, dogs, objects, day, and night footage.",
+    "The dataset contains one source video; temporal holdout scores are not independent evidence. Evaluate on additional labeled camera sessions.",
+    "Independent source-video validation showed weak goat detection; collect additional labeled camera sessions before production use."
+  ],
+  "cctv_validation": "single_video_temporal_holdout_only",
+  "external_validation": {
+    "map": {
+      "confidence": 0.001,
+      "precision": 0.3849444559030653,
+      "recall": 0.35025917413014185,
+      "map50": 0.33170565729365403,
+      "map50_95": 0.15907901722254694,
+      "per_class": {
+        "goat": {
+          "precision": 0.13387123110418556,
+          "recall": 0.13818181818181818,
+          "map50_95": 0.025686772907384303
+        },
+        "sheep": {
+          "precision": 0.6360176807019451,
+          "recall": 0.5623365300784655,
+          "map50_95": 0.2924712615377096
+        }
+      },
+      "images": 139,
+      "source_dataset": "My First Project.v1i.yolov8, test split; source video 17921026488091792031676490_0_mp4"
+    },
+    "operating_point": {
+      "confidence": 0.25,
+      "precision": 0.3849444559030653,
+      "recall": 0.35025917413014185,
+      "map50": 0.2744850221754001,
+      "map50_95": 0.13523126618182357,
+      "per_class": {
+        "goat": {
+          "precision": 0.13387123110418556,
+          "recall": 0.13818181818181818,
+          "map50_95": 0.020676714575899376
+        },
+        "sheep": {
+          "precision": 0.6360176807019451,
+          "recall": 0.5623365300784655,
+          "map50_95": 0.2497858177877478
+        }
+      },
+      "images": 139,
+      "source_dataset": "My First Project.v1i.yolov8, test split; source video 17921026488091792031676490_0_mp4"
+    },
+    "independence_note": "This test split is from a different source video than the training dataset GOATS-SHEEPS/4280_mp4."
+  },
+  "external_validation_status": "failed"
+}
