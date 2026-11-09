@@ -32,7 +32,7 @@ def setting_float(name: str, default: float, minimum: float, maximum: float) -> 
 
 @dataclass(frozen=True)
 class PreviewUploadConfig:
-    fps: int = 2
+    fps: int = 15
     timeout_seconds: float = 8.0
     max_retries: int = 2
     backoff_initial_seconds: float = 2.0
@@ -48,7 +48,7 @@ class PreviewUploadConfig:
         initial = setting_float("CAMERA_FRAME_BACKOFF_INITIAL", 2.0, 0.5, 60.0)
         maximum = max(initial, setting_float("CAMERA_FRAME_BACKOFF_MAX", 30.0, 0.5, 300.0))
         return cls(
-            fps=setting_int("CAMERA_PREVIEW_UPLOAD_FPS", 2, 1, 5),
+            fps=setting_int("CAMERA_PREVIEW_UPLOAD_FPS", 15, 1, 15),
             timeout_seconds=setting_float("CAMERA_FRAME_UPLOAD_TIMEOUT", 8.0, 1.0, 60.0),
             max_retries=setting_int("CAMERA_FRAME_MAX_RETRIES", 2, 0, 5),
             backoff_initial_seconds=initial,
@@ -77,7 +77,16 @@ class LatestFrameBuffer:
 
 
 def retry_after_seconds(headers: Mapping[str, str], now: float | None = None) -> float | None:
-    """Read Retry-After first; the custom millisecond header is a fallback."""
+    """Prefer the camera endpoint's precise millisecond retry hint."""
+    retry_after_ms = headers.get("X-Camera-Retry-After-Ms")
+    if retry_after_ms:
+        try:
+            delay = float(retry_after_ms) / 1_000
+            if math.isfinite(delay) and delay >= 0:
+                return delay
+        except (TypeError, ValueError):
+            pass
+
     retry_after = headers.get("Retry-After")
     if retry_after:
         try:
@@ -94,14 +103,6 @@ def retry_after_seconds(headers: Mapping[str, str], now: float | None = None) ->
             except (TypeError, ValueError, OverflowError):
                 pass
 
-    retry_after_ms = headers.get("X-Camera-Retry-After-Ms")
-    if retry_after_ms:
-        try:
-            delay = float(retry_after_ms) / 1_000
-            if math.isfinite(delay) and delay >= 0:
-                return delay
-        except (TypeError, ValueError):
-            pass
     return None
 
 
@@ -116,6 +117,7 @@ class PreviewUploader:
         stop_event: threading.Event,
         config: PreviewUploadConfig | None = None,
         *,
+        test_only: bool = False,
         session_factory: Callable[[], Any] = requests.Session,
         logger: logging.Logger | None = None,
         monotonic: Callable[[], float] = time.monotonic,
@@ -125,6 +127,7 @@ class PreviewUploader:
         self.token = token
         self.stop_event = stop_event
         self.config = config or PreviewUploadConfig.from_env()
+        self.test_only = test_only
         self.session_factory = session_factory
         self.log = logger or logging.getLogger("alpasfarm-camera-gateway.preview")
         self.monotonic = monotonic
@@ -135,6 +138,8 @@ class PreviewUploader:
         self.http_429 = 0
         self.failures = 0
         self.current_backoff_seconds = 0.0
+        self.http_request_seconds_total = 0.0
+        self.http_request_count = 0
 
     def _snapshot_latest(self, previous_sequence: int) -> tuple[int, Any | None]:
         sequence, frame = self.frames.snapshot()
@@ -143,8 +148,12 @@ class PreviewUploader:
         return sequence, frame
 
     def _log_metrics(self) -> None:
+        average_http_ms = (
+            self.http_request_seconds_total * 1_000 / self.http_request_count
+            if self.http_request_count else 0.0
+        )
         self.log.info(
-            "Preview upload stats: configured_fps=%s uploaded=%s skipped=%s HTTP200=%s HTTP204=%s HTTP429=%s failures=%s current_backoff=%.1fs.",
+            "Preview upload stats: configured_fps=%s uploaded=%s skipped=%s HTTP200=%s HTTP204=%s HTTP429=%s failures=%s avg_http_ms=%.1f current_backoff=%.1fs.",
             self.config.fps,
             self.uploaded,
             self.skipped,
@@ -152,6 +161,7 @@ class PreviewUploader:
             self.http_204,
             self.http_429,
             self.failures,
+            average_http_ms,
             self.current_backoff_seconds,
         )
 
@@ -160,6 +170,8 @@ class PreviewUploader:
         self.log.info("Preview upload rate configured: %s FPS maximum.", self.config.fps)
 
         headers = {"X-Camera-Gateway-Token": self.token, "Content-Type": "image/jpeg"}
+        if self.test_only:
+            headers["X-Camera-Gateway-Test-Only"] = "1"
         next_upload_at = 0.0
         next_metrics_at = self.monotonic() + 60
         last_sequence = 0
@@ -221,6 +233,9 @@ class PreviewUploader:
                             timeout=self.config.timeout_seconds,
                         )
                     except requests.RequestException:
+                        request_finished_at = self.monotonic()
+                        self.http_request_seconds_total += max(0.0, request_finished_at - request_started_at)
+                        self.http_request_count += 1
                         self.failures += 1
                         if self.monotonic() - last_failure_log_at >= 60:
                             self.log.warning("Could not reach ALPASFARM for the preview; detection and counting continue.")
@@ -247,6 +262,8 @@ class PreviewUploader:
                     response_headers = response.headers
                     response.close()
                     response_received_at = self.monotonic()
+                    self.http_request_seconds_total += max(0.0, response_received_at - request_started_at)
+                    self.http_request_count += 1
 
                     if 200 <= status < 300:
                         self.uploaded += 1
@@ -279,7 +296,7 @@ class PreviewUploader:
                             exponential_backoff,
                         )
                         server_delay = retry_after_seconds(response_headers)
-                        delay = max(fallback_delay, server_delay or 0.0)
+                        delay = server_delay if server_delay is not None else fallback_delay
                         exponential_backoff = min(
                             self.config.backoff_max_seconds,
                             max(self.config.backoff_initial_seconds, fallback_delay * 2),

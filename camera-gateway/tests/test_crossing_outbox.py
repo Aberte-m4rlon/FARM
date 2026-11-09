@@ -12,8 +12,21 @@ def event(event_key: str | None = None) -> dict[str, object]:
         "session_id": None,
         "event_key": event_key or str(uuid.uuid4()),
         "tracking_id": "T-017",
-        "animal_type": "goat",
+        "animal_type": "unknown",
         "direction": "entry",
+        "event_type": "ENTRY",
+        "crossing_direction": "top-to-bottom",
+        "previous_side": "top",
+        "current_side": "bottom",
+        "previous_centroid": {"x": 0.5, "y": 0.4},
+        "current_centroid": {"x": 0.5, "y": 0.7},
+        "line_y": 0.55,
+        "crossing_margin": 0.03,
+        "frame_width": 640,
+        "frame_height": 480,
+        "minimum_displacement_px": 16.0,
+        "track_state": "ACTIVE",
+        "validation_status": "confirmed",
         "confidence": 0.91,
         "config_revision": 4,
     }
@@ -45,6 +58,38 @@ class CrossingOutboxTests(unittest.TestCase):
             queue.acknowledge([first["event_key"]])
             self.assertEqual(queue.pending(), [second])
             self.assertEqual(CrossingOutbox(path).pending(), [second])
+
+    def test_unrecorded_crossing_is_durably_archived_before_acknowledgement(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "pending.json"
+            queue = CrossingOutbox(path)
+            item = event()
+            queue.enqueue([item])
+
+            self.assertEqual(queue.archive_unrecorded([{
+                "event_key": item["event_key"],
+                "reason": "no_active_session",
+            }]), 1)
+            queue.acknowledge([item["event_key"]])
+
+            archive_path = path.with_name("pending-unrecorded.json")
+            archived = json.loads(archive_path.read_text(encoding="utf-8"))
+            self.assertEqual(queue.pending(), [])
+            self.assertEqual(CrossingOutbox(path).pending(), [])
+            self.assertEqual(archived[0]["event_key"], item["event_key"])
+            self.assertEqual(archived[0]["not_recorded_reason"], "no_active_session")
+            self.assertTrue(archived[0]["archived_at"])
+
+    def test_unrecorded_archive_refuses_unknown_event_key(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "pending.json"
+            queue = CrossingOutbox(path)
+            with self.assertRaises(RuntimeError):
+                queue.archive_unrecorded([{
+                    "event_key": str(uuid.uuid4()),
+                    "reason": "no_active_session",
+                }])
+            self.assertFalse(path.with_name("pending-unrecorded.json").exists())
 
     def test_unknown_acknowledgement_does_not_change_queue(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -83,7 +128,7 @@ class CrossingOutboxTests(unittest.TestCase):
             queue.enqueue([event()])
             self.assertIsInstance(json.loads(path.read_text(encoding="utf-8")), list)
 
-    def test_legacy_pending_events_are_rewritten_without_identity_data(self) -> None:
+    def test_legacy_pending_events_without_geometry_are_not_counted(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "pending.json"
             key = str(uuid.uuid4())
@@ -102,18 +147,9 @@ class CrossingOutboxTests(unittest.TestCase):
 
             queued = CrossingOutbox(path).pending()
 
-            self.assertEqual(queued, [{
-                "session_id": None,
-                "event_key": key,
-                "tracking_id": "T-017",
-                "animal_type": "goat",
-                "direction": "entry",
-                "confidence": 0.91,
-                "config_revision": 4,
-            }])
+            self.assertEqual(queued, [])
             saved = json.loads(path.read_text(encoding="utf-8"))
-            self.assertNotIn("eartag_number", saved[0])
-            self.assertNotIn("eartag_confidence", saved[0])
+            self.assertEqual(saved, [])
 
 
 if __name__ == "__main__":

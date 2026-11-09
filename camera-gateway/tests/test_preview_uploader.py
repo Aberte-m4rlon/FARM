@@ -42,11 +42,11 @@ class PreviewUploadTests(unittest.TestCase):
         self.assertEqual(frames.publish("latest"), 2)
         self.assertEqual(frames.snapshot(), (2, "latest"))
 
-    def test_default_preview_rate_is_two_and_caps_at_five(self) -> None:
+    def test_default_preview_rate_is_fifteen_and_caps_at_fifteen(self) -> None:
         with patch.dict("os.environ", {}, clear=True):
-            self.assertEqual(PreviewUploadConfig.from_env().fps, 2)
+            self.assertEqual(PreviewUploadConfig.from_env().fps, 15)
         with patch.dict("os.environ", {"CAMERA_PREVIEW_UPLOAD_FPS": "99"}):
-            self.assertEqual(PreviewUploadConfig.from_env().fps, 5)
+            self.assertEqual(PreviewUploadConfig.from_env().fps, 15)
 
     def test_http_200_is_a_successful_preview_response(self) -> None:
         accepted = threading.Event()
@@ -85,10 +85,48 @@ class PreviewUploadTests(unittest.TestCase):
         self.assertFalse(worker.is_alive())
         self.assertEqual(uploader.uploaded, 1)
 
+    def test_local_test_preview_marks_request_for_no_database_writes(self) -> None:
+        received = threading.Event()
+        request_headers: list[dict[str, str]] = []
+
+        class FakeSession:
+            def __enter__(self) -> "FakeSession":
+                return self
+
+            def __exit__(self, *_args: object) -> None:
+                pass
+
+            def post(self, *_args: object, headers: dict[str, str], **_kwargs: object) -> FakeResponse:
+                request_headers.append(headers)
+                received.set()
+                return FakeResponse(204)
+
+        frames = LatestFrameBuffer()
+        stop_event = threading.Event()
+        uploader = PreviewUploader(
+            frames,
+            "http://127.0.0.1:5173/api/camera/gateway/frame",
+            "private-token",
+            stop_event,
+            PreviewUploadConfig(fps=2),
+            test_only=True,
+            session_factory=FakeSession,
+        )
+        with patch("preview_uploader.cv2.imencode", side_effect=lambda *_args: (True, FakeJpeg(_args[1]))):
+            worker = threading.Thread(target=uploader.run, daemon=True)
+            worker.start()
+            frames.publish("test-frame")
+            self.assertTrue(received.wait(1))
+            stop_event.set()
+            worker.join(1)
+
+        self.assertFalse(worker.is_alive())
+        self.assertEqual(request_headers[0]["X-Camera-Gateway-Test-Only"], "1")
+
     def test_retry_after_header_is_preferred_to_custom_hint(self) -> None:
         self.assertEqual(
-            retry_after_seconds({"Retry-After": "3", "X-Camera-Retry-After-Ms": "100"}),
-            3.0,
+            retry_after_seconds({"Retry-After": "1", "X-Camera-Retry-After-Ms": "100"}),
+            0.1,
         )
         self.assertEqual(retry_after_seconds({"X-Camera-Retry-After-Ms": "250"}), 0.25)
 

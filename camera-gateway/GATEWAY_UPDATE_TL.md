@@ -1,11 +1,23 @@
-# Camera gate line update
+# Update ng OpenCV camera gateway
 
-Palitan lang ang `gateway.py`, `inference.py`, at `flow_counter.py` sa kasalukuyang `camera-gateway` folder gamit ang mga kaparehong file mula sa ZIP na ito. Huwag palitan ang `.env`, camera credentials, private model weights, o `state/camera-flow-counts.json`.
+Ang CCTV gateway ay gumagamit na ng OpenCV motion detection at temporal
+tracking. Hindi nito ginagamit ang YOLO o model weights para sa CCTV, at hindi
+nito mapagkakatiwalaang nakikilala kung kambing o tupa ang galaw.
 
-Pagkatapos kopyahin, buksan ang PowerShell sa folder na may `gateway.py` at patakbuhin:
+Pagkatapos mag-update ng code, patakbuhin ang focused tests mula sa
+`camera-gateway` folder:
 
 ```powershell
-.\.venv\Scripts\python.exe gateway.py
+.\.venv\Scripts\python.exe -m unittest tests.test_motion_tracker tests.test_inference tests.test_event_tracker
 ```
 
-Kailangan may internet ang gateway laptop at pareho ang `ALPASFARM_API_URL` at `CAMERA_GATEWAY_TOKEN` sa nakatakda para sa live VPS. Kapag tumatakbo na ito, i-drag ang pulang linya sa live camera o gamitin ang slider. Ang direksyon ng pasok ay puwede ring baguhin sa camera page. Makikita ang bounding boxes kapag nakakita ang model ng kambing o tupa.
+Sa bagong gateway setup, gamitin ang `requirements.txt`; hindi na kailangan
+ang PyTorch o Ultralytics para sa CCTV. Panatilihin ang `.env`, camera
+credentials, at `state/camera-crossings-outbox.json` habang nag-a-update.
+Huwag magbago ng production API o camera settings para lang sa lokal na test.
+
+Normal na galaw lang ang ipinapakita bilang bounding box matapos makumpirma sa
+magkakasunod na frame. Para sa developer debugging, itakda ang
+`CAMERA_GATEWAY_DEBUG=1`; lokal na mase-save ang raw/filtered masks at track
+measurements sa `state/motion-debug/`. Huwag iwanang naka-enable ang debug
+mode sa shared na farmer workstation.
